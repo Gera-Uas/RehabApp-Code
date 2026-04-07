@@ -1,0 +1,2963 @@
+﻿[
+    {
+        "groupId":  "neck",
+        "category":  "movilidad",
+        "exercises":  [
+                          {
+                              "id":  "neck_m_1",
+                              "name":  "Rotaciones cervicales",
+                              "videoUrl":  "https://www.youtube.com/watch?v=UrRPuBnXuBY",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  5,
+                                              "effectiveness":  4,
+                                              "frequency":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "trapecio-superior",
+                                                    "esternocleidomastoideo",
+                                                    "escalenos"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "neck_m_2",
+                              "name":  "Flexión cervical controlada",
+                              "videoUrl":  "https://www.youtube.com/watch?v=JmROI8Kkr-c",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  5,
+                                              "effectiveness":  4,
+                                              "frequency":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "trapecio-superior",
+                                                    "esternocleidomastoideo",
+                                                    "escalenos"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "neck_m_3",
+                              "name":  "Inclinaciones laterales suaves",
+                              "videoUrl":  "https://www.youtube.com/watch?v=iuOhuhpTOXc",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  4,
+                                              "effectiveness":  3,
+                                              "frequency":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "trapecio-superior",
+                                                    "esternocleidomastoideo",
+                                                    "escalenos"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "neck_m_4",
+                              "name":  "Retracción cervical",
+                              "videoUrl":  "https://www.youtube.com/watch?v=DMyt8gCnTFM",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  6,
+                                              "effectiveness":  4,
+                                              "frequency":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "trapecio-superior",
+                                                    "esternocleidomastoideo",
+                                                    "escalenos"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "neck_m_5",
+                              "name":  "Movilidad cervical en diagonal",
+                              "videoUrl":  "https://www.youtube.com/watch?v=jRKW_wG1NAg",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  7,
+                                              "effectiveness":  4,
+                                              "frequency":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "trapecio-superior",
+                                                    "esternocleidomastoideo",
+                                                    "escalenos"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "shoulder",
+        "category":  "movilidad",
+        "exercises":  [
+                          {
+                              "id":  "shoulder_m_1",
+                              "name":  "Pendular circular",
+                              "videoUrl":  "https://www.youtube.com/watch?v=b6c5dGbvqnM",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  10,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "deltoides-medio",
+                                                    "manguito-rotador",
+                                                    "trapecio-medio"
+                                                ],
+                              "movementType":  "pendular",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "shoulder_m_2",
+                              "name":  "Deslizamientos en pared",
+                              "videoUrl":  "https://www.youtube.com/watch?v=gr3i4mU5kBc",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  8,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "deltoides-medio",
+                                                    "manguito-rotador",
+                                                    "trapecio-medio"
+                                                ],
+                              "movementType":  "pendular",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "shoulder_m_3",
+                              "name":  "Cí­rculos amplios de hombro",
+                              "videoUrl":  "https://www.youtube.com/watch?v=kZmY7hFKOdc",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  6,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "deltoides-medio",
+                                                    "manguito-rotador",
+                                                    "trapecio-medio"
+                                                ],
+                              "movementType":  "pendular",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "shoulder_m_4",
+                              "name":  "Elevaciones escapulares",
+                              "videoUrl":  "https://www.youtube.com/watch?v=Q5m5SRZoWgw",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  5,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "deltoides-medio",
+                                                    "manguito-rotador",
+                                                    "trapecio-medio"
+                                                ],
+                              "movementType":  "pendular",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "shoulder_m_5",
+                              "name":  "Rotaciones externas controladas",
+                              "videoUrl":  "https://www.youtube.com/watch?v=wQdfeB80fqo",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  7,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "deltoides-medio",
+                                                    "manguito-rotador",
+                                                    "trapecio-medio"
+                                                ],
+                              "movementType":  "pendular",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "elbow",
+        "category":  "movilidad",
+        "exercises":  [
+                          {
+                              "id":  "elbow_m_1",
+                              "name":  "Flexión y extensión activa",
+                              "videoUrl":  "https://www.youtube.com/watch?v=vAk6Gx4XDVs",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  12,
+                                              "frequency":  2,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "elbow_m_2",
+                              "name":  "Pronosupinación",
+                              "videoUrl":  "http://youtube.com/watch?v=iLFDJhKelzQ",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  4,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "elbow_m_3",
+                              "name":  "Rotaciones asistidas de codo",
+                              "videoUrl":  "https://www.youtube.com/watch?v=CXa7beozdRM",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  6,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "elbow_m_4",
+                              "name":  "Extensión pasiva con apoyo",
+                              "videoUrl":  "https://www.youtube.com/watch?v=Y-xsXsIcUmM",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  5,
+                                              "frequency":  4,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "elbow_m_5",
+                              "name":  "Flexión controlada con pausa",
+                              "videoUrl":  "https://www.youtube.com/shorts/reFdOw9BUXo",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  7,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "wrist",
+        "category":  "movilidad",
+        "exercises":  [
+                          {
+                              "id":  "wrist_m_1",
+                              "name":  "Flexión y extensión de muñeca",
+                              "videoUrl":  "https://www.youtube.com/watch?v=-HpBF3oAi9w",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  7,
+                                              "frequency":  2,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "wrist_m_2",
+                              "name":  "Desviación radial y cubital",
+                              "videoUrl":  "https://www.youtube.com/watch?v=LripJoKEPYU",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "wrist_m_3",
+                              "name":  "Cí­rculos lentos de muñeca",
+                              "videoUrl":  "https://www.youtube.com/shorts/81ymcRwgrD4",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  4,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "wrist_m_4",
+                              "name":  "Movilidad en carga ligera",
+                              "videoUrl":  "https://www.youtube.com/shorts/2DQ93eIef84",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  6,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "wrist_m_5",
+                              "name":  "Flexión dorsal sostenida",
+                              "videoUrl":  "https://www.youtube.com/watch?v=7wA8ta4-B1w",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  5,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "hip",
+        "category":  "movilidad",
+        "exercises":  [
+                          {
+                              "id":  "hip_m_1",
+                              "name":  "Rotaciones de cadera en cuatro puntos",
+                              "videoUrl":  "https://www.youtube.com/watch?v=QplClyuy91M",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  14,
+                                              "frequency":  2,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "glúteo-medio",
+                                                    "psoas-iliaco",
+                                                    "tensor-fascia-lata"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "cuatro-puntos"
+                          },
+                          {
+                              "id":  "hip_m_2",
+                              "name":  "Movilidad de cadera 90/90",
+                              "videoUrl":  "https://www.youtube.com/watch?v=-1ai_Xseb20",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  15,
+                                              "frequency":  2,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "glúteo-medio",
+                                                    "psoas-iliaco",
+                                                    "tensor-fascia-lata"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "cuatro-puntos"
+                          },
+                          {
+                              "id":  "hip_m_3",
+                              "name":  "Cí­rculos de cadera de pie",
+                              "videoUrl":  "https://www.youtube.com/shorts/wNj1UMrOuZc",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "glúteo-medio",
+                                                    "psoas-iliaco",
+                                                    "tensor-fascia-lata"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "cuatro-puntos"
+                          },
+                          {
+                              "id":  "hip_m_4",
+                              "name":  "Balanceos antero-posteriores",
+                              "videoUrl":  "https://www.youtube.com/shorts/c4icEJP8O5g",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "glúteo-medio",
+                                                    "psoas-iliaco",
+                                                    "tensor-fascia-lata"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "cuatro-puntos"
+                          },
+                          {
+                              "id":  "hip_m_5",
+                              "name":  "Aperturas controladas de cadera",
+                              "videoUrl":  "https://www.youtube.com/shorts/rELq_25cpW0",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  10,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "glúteo-medio",
+                                                    "psoas-iliaco",
+                                                    "tensor-fascia-lata"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "cuatro-puntos"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "knee",
+        "category":  "movilidad",
+        "exercises":  [
+                          {
+                              "id":  "knee_m_1",
+                              "name":  "Flexo-extensión en sentado",
+                              "videoUrl":  "https://www.youtube.com/watch?v=bL0hyP4yFj4",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "isquiotibiales",
+                                                    "gastrocnemio"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "knee_m_2",
+                              "name":  "Extensión terminal de rodilla",
+                              "videoUrl":  "https://www.youtube.com/watch?v=kkQPaCjfqg8",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "isquiotibiales",
+                                                    "gastrocnemio"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "knee_m_3",
+                              "name":  "Balanceos suaves de rodilla",
+                              "videoUrl":  "https://www.youtube.com/shorts/D3EjrCcZm0M",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  4,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "isquiotibiales",
+                                                    "gastrocnemio"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "knee_m_4",
+                              "name":  "Sentadilla parcial controlada",
+                              "videoUrl":  "https://www.youtube.com/watch?v=sPIfJwGdTPE",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  8,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "isquiotibiales",
+                                                    "gastrocnemio"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "knee_m_5",
+                              "name":  "Extensión isométrica ligera",
+                              "videoUrl":  "https://www.youtube.com/shorts/9Du6LnHy0Z4",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  7,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "rehabilitación",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "isquiotibiales",
+                                                    "gastrocnemio"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "ankle",
+        "category":  "movilidad",
+        "exercises":  [
+                          {
+                              "id":  "ankle_m_1",
+                              "name":  "Flexo-extensión en sentado",
+                              "videoUrl":  "https://www.youtube.com/watch?v=QG1zcspeqZo",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  4,
+                                              "frequency":  2,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "equilibrio",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gemelos",
+                                                    "tibial-anterior",
+                                                    "peroneos"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "ankle_m_2",
+                              "name":  "Cí­rculos de tobillo",
+                              "videoUrl":  "https://www.youtube.com/watch?v=SWcjGJI4dl8",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  9,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "equilibrio",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gemelos",
+                                                    "tibial-anterior",
+                                                    "peroneos"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "ankle_m_3",
+                              "name":  "Dorsiflexión asistida",
+                              "videoUrl":  "https://www.youtube.com/shorts/sEsTxf90yIY",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  5,
+                                              "frequency":  4,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "equilibrio",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gemelos",
+                                                    "tibial-anterior",
+                                                    "peroneos"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "ankle_m_4",
+                              "name":  "Movilidad de tobillo en carga",
+                              "videoUrl":  "https://www.youtube.com/shorts/iYJ6LnVOmtY",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  8,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "equilibrio",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gemelos",
+                                                    "tibial-anterior",
+                                                    "peroneos"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "ankle_m_5",
+                              "name":  "Inversiones y eversión controladas",
+                              "videoUrl":  "https://www.youtube.com/shorts/hLpSDuSG224",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  6,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "movilidad-activa",
+                                           "rango-articular",
+                                           "equilibrio",
+                                           "bajo-impacto",
+                                           "tren-inferior"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gemelos",
+                                                    "tibial-anterior",
+                                                    "peroneos"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "chest",
+        "category":  "estiramientos",
+        "exercises":  [
+                          {
+                              "id":  "chest_e_1",
+                              "name":  "Estiramiento de pectoral mayor (brazo alto)",
+                              "videoUrl":  "https://www.youtube.com/watch?v=cvg4Ana3vuU",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  11,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "estático",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "pectoral-menor",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "chest_e_2",
+                              "name":  "Estiramiento en esquina",
+                              "videoUrl":  "https://www.youtube.com/watch?v=J6Ps49ndrMg",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  9,
+                                              "frequency":  2,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "estático",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "pectoral-menor",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "chest_e_3",
+                              "name":  "Apertura de pecho en pared",
+                              "videoUrl":  "https://www.youtube.com/watch?v=c4vAHGbUJMY",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "estático",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "pectoral-menor",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "chest_e_4",
+                              "name":  "Estiramiento dinámico de pectorales",
+                              "videoUrl":  "https://www.youtube.com/shorts/5IBR2KGEtyo",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "estático",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "pectoral-menor",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "chest_e_5",
+                              "name":  "Apertura de brazos en supino",
+                              "videoUrl":  "https://www.youtube.com/shorts/1-mTafNGWTU",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  10,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "estático",
+                                           "tren-superior"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "pectoral-menor",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "chest",
+        "category":  "fortalecimiento",
+        "exercises":  [
+                          {
+                              "id":  "chest_f_1",
+                              "name":  "Flexiones en pared",
+                              "videoUrl":  "https://www.youtube.com/watch?v=_ifxX0U-xrM",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "fuerza"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "trí­ceps",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "inclinado"
+                          },
+                          {
+                              "id":  "chest_f_2",
+                              "name":  "Lagartija inclinada",
+                              "videoUrl":  "https://www.youtube.com/watch?v=Mynw18uQA9g",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  13,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "fuerza"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "trí­ceps",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "inclinado"
+                          },
+                          {
+                              "id":  "chest_f_3",
+                              "name":  "Press isométrico de palmas",
+                              "videoUrl":  "https://www.youtube.com/shorts/4EETveFoRJo",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  5,
+                                              "frequency":  4,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "fuerza"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "trí­ceps",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "inclinado"
+                          },
+                          {
+                              "id":  "chest_f_4",
+                              "name":  "Flexiones excéntricas controladas",
+                              "videoUrl":  "https://www.youtube.com/shorts/artQ2PhuXiE",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  10,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "fuerza"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "trí­ceps",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "inclinado"
+                          },
+                          {
+                              "id":  "chest_f_5",
+                              "name":  "Aperturas con banda elástica",
+                              "videoUrl":  "https://www.youtube.com/watch?v=ZzKiLLQLxM4",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "fuerza"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "pectoral-mayor",
+                                                    "trí­ceps",
+                                                    "deltoides-anterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "inclinado"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "abdomen",
+        "category":  "estiramientos",
+        "exercises":  [
+                          {
+                              "id":  "abdomen_e_1",
+                              "name":  "Estiramiento Cobra",
+                              "videoUrl":  "https://www.youtube.com/watch?v=Nd3j6Avtv6Q",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  11,
+                                              "frequency":  3,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "movilidad-activa",
+                                           "mejora-postura",
+                                           "bajo-impacto",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "oblicuos-externos",
+                                                    "psoas-iliaco"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-prono"
+                          },
+                          {
+                              "id":  "abdomen_e_2",
+                              "name":  "Extensión de tronco en pie",
+                              "videoUrl":  "https://www.youtube.com/watch?v=scKu1fToeIw",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  11,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "movilidad-activa",
+                                           "mejora-postura",
+                                           "bajo-impacto",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "oblicuos-externos",
+                                                    "psoas-iliaco"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-prono"
+                          },
+                          {
+                              "id":  "abdomen_e_3",
+                              "name":  "Estiramiento abdominal en rodillas",
+                              "videoUrl":  "https://www.youtube.com/shorts/wJhKRDG4_mg",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  9,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "movilidad-activa",
+                                           "mejora-postura",
+                                           "bajo-impacto",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "oblicuos-externos",
+                                                    "psoas-iliaco"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-prono"
+                          },
+                          {
+                              "id":  "abdomen_e_4",
+                              "name":  "Extensión lumbar suave",
+                              "videoUrl":  "https://www.youtube.com/shorts/TgnrZuEk6pI",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  7,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "movilidad-activa",
+                                           "mejora-postura",
+                                           "bajo-impacto",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "oblicuos-externos",
+                                                    "psoas-iliaco"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-prono"
+                          },
+                          {
+                              "id":  "abdomen_e_5",
+                              "name":  "Arco abdominal controlado",
+                              "videoUrl":  "https://www.youtube.com/shorts/U2Pxw_PLfXc",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  10,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "movilidad-activa",
+                                           "mejora-postura",
+                                           "bajo-impacto",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "oblicuos-externos",
+                                                    "psoas-iliaco"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-prono"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "abdomen",
+        "category":  "fortalecimiento",
+        "exercises":  [
+                          {
+                              "id":  "abdomen_f_1",
+                              "name":  "Marcha en puente",
+                              "videoUrl":  "https://www.youtube.com/watch?v=nXd6rZDHC98",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  5,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "estabilización",
+                                           "casa",
+                                           "control-motor",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "transverso-abdominal",
+                                                    "multí­fidos"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          },
+                          {
+                              "id":  "abdomen_f_2",
+                              "name":  "Plancha baja",
+                              "videoUrl":  "https://www.youtube.com/watch?v=nqHQeokx52I",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  7,
+                                              "frequency":  3,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "estabilización",
+                                           "casa",
+                                           "control-motor",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "transverso-abdominal",
+                                                    "multí­fidos"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          },
+                          {
+                              "id":  "abdomen_f_3",
+                              "name":  "Dead bug controlado",
+                              "videoUrl":  "https://www.youtube.com/shorts/DqLL45uk2Tk",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "estabilización",
+                                           "casa",
+                                           "control-motor",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "transverso-abdominal",
+                                                    "multí­fidos"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          },
+                          {
+                              "id":  "abdomen_f_4",
+                              "name":  "Plancha con apoyo de rodillas",
+                              "videoUrl":  "https://www.youtube.com/shorts/kUGXWrNgVLQ",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "estabilización",
+                                           "casa",
+                                           "control-motor",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "transverso-abdominal",
+                                                    "multí­fidos"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          },
+                          {
+                              "id":  "abdomen_f_5",
+                              "name":  "Elevaciones de pelvis",
+                              "videoUrl":  "https://www.youtube.com/shorts/mRkKyVrnpeY",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "estabilización",
+                                           "casa",
+                                           "control-motor",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "recto-abdominal",
+                                                    "transverso-abdominal",
+                                                    "multí­fidos"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "back",
+        "category":  "estiramientos",
+        "exercises":  [
+                          {
+                              "id":  "back_e_1",
+                              "name":  "Gatoâ€“camello",
+                              "videoUrl":  "https://www.youtube.com/watch?v=ZiC_9Yp5A68",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  8,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "reducción-dolor",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "dorsal-ancho"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "cuatro-puntos"
+                          },
+                          {
+                              "id":  "back_e_2",
+                              "name":  "Rotaciones lumbares",
+                              "videoUrl":  "https://www.youtube.com/watch?v=uxAXs2Vyc7k",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  7,
+                                              "frequency":  2,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "reducción-dolor",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "dorsal-ancho"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "cuatro-puntos"
+                          },
+                          {
+                              "id":  "back_e_3",
+                              "name":  "Flexión de columna en sentado",
+                              "videoUrl":  "https://www.youtube.com/watch?v=y_O8y8Jo0As",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  6,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "reducción-dolor",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "dorsal-ancho"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "cuatro-puntos"
+                          },
+                          {
+                              "id":  "back_e_4",
+                              "name":  "Estiramiento dorsal en apoyo",
+                              "videoUrl":  "https://www.youtube.com/shorts/7IuLQK2dqN4",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "reducción-dolor",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "dorsal-ancho"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "cuatro-puntos"
+                          },
+                          {
+                              "id":  "back_e_5",
+                              "name":  "Extensión torácica controlada",
+                              "videoUrl":  "https://www.youtube.com/shorts/zXVlUo3a3tg",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "mejora-postura",
+                                           "oficina",
+                                           "reducción-dolor",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "dorsal-ancho"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "cuatro-puntos"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "back",
+        "category":  "fortalecimiento",
+        "exercises":  [
+                          {
+                              "id":  "back_f_1",
+                              "name":  "Superman",
+                              "videoUrl":  "https://www.youtube.com/watch?v=FWaMfMSJy3I",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  14,
+                                              "frequency":  2,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "mejora-postura",
+                                           "prevención-lesiones",
+                                           "estabilización",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "glúteo-mayor"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "intermedio",
+                              "position":  "acostado-prono"
+                          },
+                          {
+                              "id":  "back_f_2",
+                              "name":  "Bird Dog",
+                              "videoUrl":  "https://www.youtube.com/watch?v=vzU5xrs1gMQ",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  10,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "mejora-postura",
+                                           "prevención-lesiones",
+                                           "estabilización",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "glúteo-mayor"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "intermedio",
+                              "position":  "acostado-prono"
+                          },
+                          {
+                              "id":  "back_f_3",
+                              "name":  "Remo isométrico con banda",
+                              "videoUrl":  "https://www.youtube.com/watch?v=hJi8O0Rc7AI",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "mejora-postura",
+                                           "prevención-lesiones",
+                                           "estabilización",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "glúteo-mayor"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "intermedio",
+                              "position":  "acostado-prono"
+                          },
+                          {
+                              "id":  "back_f_4",
+                              "name":  "Extensión lumbar en suelo",
+                              "videoUrl":  "hhttps://www.youtube.com/shorts/1ziI6GUQ56U",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "mejora-postura",
+                                           "prevención-lesiones",
+                                           "estabilización",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "glúteo-mayor"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "intermedio",
+                              "position":  "acostado-prono"
+                          },
+                          {
+                              "id":  "back_f_5",
+                              "name":  "Pull-apart con banda",
+                              "videoUrl":  "https://www.youtube.com/shorts/Jcn93rBhUps",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  7,
+                                              "frequency":  5,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "fortalecimiento-core",
+                                           "mejora-postura",
+                                           "prevención-lesiones",
+                                           "estabilización",
+                                           "casa"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "erector-espinal",
+                                                    "multí­fidos",
+                                                    "glúteo-mayor"
+                                                ],
+                              "movementType":  "isométrico",
+                              "level":  "intermedio",
+                              "position":  "acostado-prono"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "arm",
+        "category":  "estiramientos",
+        "exercises":  [
+                          {
+                              "id":  "arm_e_1",
+                              "name":  "Estiramiento de trí­ceps",
+                              "videoUrl":  "https://www.youtube.com/watch?v=SAXzjpf_Juc",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  15,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "deltoides-posterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "arm_e_2",
+                              "name":  "Estiramiento de bí­ceps",
+                              "videoUrl":  "https://www.youtube.com/watch?v=t0XCkAd_fvM",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  15,
+                                              "frequency":  2,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "deltoides-posterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "arm_e_3",
+                              "name":  "Apertura de brazos cruzados",
+                              "videoUrl":  "https://www.youtube.com/shorts/BNsEQ41FTQw",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  10,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "deltoides-posterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "arm_e_4",
+                              "name":  "Estiramiento dinámico de brazos",
+                              "videoUrl":  "https://www.youtube.com/watch?v=c5lc5VBLnoI",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  8,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "deltoides-posterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "arm_e_5",
+                              "name":  "Extensión posterior de hombro",
+                              "videoUrl":  "https://www.youtube.com/shorts/LLgkANwIKzk",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "bajo-impacto",
+                                           "tren-superior",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "deltoides-posterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "arm",
+        "category":  "fortalecimiento",
+        "exercises":  [
+                          {
+                              "id":  "arm_f_1",
+                              "name":  "Curl de bí­ceps con banda",
+                              "videoUrl":  "https://www.youtube.com/shorts/mDKfeoGtias",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  4,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "resistencia"
+                                       ],
+                              "equipment":  "banda-elástica",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "arm_f_2",
+                              "name":  "Extensión de trí­ceps",
+                              "videoUrl":  "https://www.youtube.com/watch?v=tBvA2q2WaPE",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  12,
+                                              "frequency":  3,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "resistencia"
+                                       ],
+                              "equipment":  "banda-elástica",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "arm_f_3",
+                              "name":  "Remo bajo con banda",
+                              "videoUrl":  "https://www.youtube.com/shorts/2WmemCXXpRw",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  13,
+                                              "frequency":  3,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "resistencia"
+                                       ],
+                              "equipment":  "banda-elástica",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "arm_f_4",
+                              "name":  "Curl martillo isométrico",
+                              "videoUrl":  "https://www.youtube.com/shorts/Nlqp8VWWZYk",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "resistencia"
+                                       ],
+                              "equipment":  "banda-elástica",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "arm_f_5",
+                              "name":  "Fondos asistidos en banco",
+                              "videoUrl":  "https://www.youtube.com/shorts/oVs-HluNKP0",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "tren-superior",
+                                           "casa",
+                                           "progresivo",
+                                           "resistencia"
+                                       ],
+                              "equipment":  "banda-elástica",
+                              "targetMuscles":  [
+                                                    "bí­ceps",
+                                                    "trí­ceps",
+                                                    "braquial"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "forearms",
+        "category":  "estiramientos",
+        "exercises":  [
+                          {
+                              "id":  "forearms_e_1",
+                              "name":  "Estiramiento de extensores de muñeca",
+                              "videoUrl":  "https://www.youtube.com/watch?v=iT_2e6nSTZs",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  15,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "prevención-lesiones",
+                                           "bajo-impacto",
+                                           "sedentario"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "supinadores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "intermedio",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "forearms_e_2",
+                              "name":  "Estiramiento de flexores de muñeca",
+                              "videoUrl":  "https://www.youtube.com/watch?v=tLTRd3NvOeY",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  12,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "prevención-lesiones",
+                                           "bajo-impacto",
+                                           "sedentario"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "supinadores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "forearms_e_3",
+                              "name":  "Rotaciones suaves de antebrazo",
+                              "videoUrl":  "https://www.youtube.com/watch?v=JzegavlYrcc",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "prevención-lesiones",
+                                           "bajo-impacto",
+                                           "sedentario"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "supinadores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "forearms_e_4",
+                              "name":  "Extensión asistida de muñeca",
+                              "videoUrl":  "https://www.youtube.com/shorts/6VYzvdjmnQ0",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  10,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "prevención-lesiones",
+                                           "bajo-impacto",
+                                           "sedentario"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "supinadores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "forearms_e_5",
+                              "name":  "Estiramiento combinado de antebrazo",
+                              "videoUrl":  "https://www.youtube.com/shorts/w_QchtBvO6E",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  9,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "oficina",
+                                           "prevención-lesiones",
+                                           "bajo-impacto",
+                                           "sedentario"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "supinadores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "sentado"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "forearms",
+        "category":  "fortalecimiento",
+        "exercises":  [
+                          {
+                              "id":  "forearms_f_1",
+                              "name":  "Flexión de muñeca con peso",
+                              "videoUrl":  "https://www.youtube.com/watch?v=lDNYkKrIONQ",
+                              "metrics":  {
+                                              "difficulty":  1,
+                                              "duration":  10,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "resistencia",
+                                           "casa",
+                                           "progresivo",
+                                           "control-motor"
+                                       ],
+                              "equipment":  "pesas-ligeras",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "intermedio",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "forearms_f_2",
+                              "name":  "Extensión de muñeca con banda",
+                              "videoUrl":  "https://www.youtube.com/shorts/w_QchtBvO6E",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "resistencia",
+                                           "casa",
+                                           "progresivo",
+                                           "control-motor"
+                                       ],
+                              "equipment":  "pesas-ligeras",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "intermedio",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "forearms_f_3",
+                              "name":  "Agarre isométrico",
+                              "videoUrl":  "https://www.youtube.com/shorts/tX5CHLnf1k8",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "resistencia",
+                                           "casa",
+                                           "progresivo",
+                                           "control-motor"
+                                       ],
+                              "equipment":  "pesas-ligeras",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "intermedio",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "forearms_f_4",
+                              "name":  "Pronación con banda",
+                              "videoUrl":  "https://www.youtube.com/shorts/5J_H9QLAt_0",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  7,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "resistencia",
+                                           "casa",
+                                           "progresivo",
+                                           "control-motor"
+                                       ],
+                              "equipment":  "pesas-ligeras",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "intermedio",
+                              "position":  "sentado"
+                          },
+                          {
+                              "id":  "forearms_f_5",
+                              "name":  "Supinación controlada",
+                              "videoUrl":  "https://www.youtube.com/shorts/SS5p9dRQy7M",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "resistencia",
+                                           "casa",
+                                           "progresivo",
+                                           "control-motor"
+                                       ],
+                              "equipment":  "pesas-ligeras",
+                              "targetMuscles":  [
+                                                    "flexores-muñeca",
+                                                    "extensores-muñeca",
+                                                    "pronadores"
+                                                ],
+                              "movementType":  "controlado",
+                              "level":  "intermedio",
+                              "position":  "sentado"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "lowerlegs",
+        "category":  "estiramientos",
+        "exercises":  [
+                          {
+                              "id":  "lowerlegs_e_1",
+                              "name":  "Estiramiento de gemelos en pared",
+                              "videoUrl":  "https://www.youtube.com/watch?v=TyZAmDcD6mM",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  15,
+                                              "frequency":  4,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto",
+                                           "deportistas",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "lowerlegs_e_2",
+                              "name":  "Estiramiento de sóleo",
+                              "videoUrl":  "https://www.youtube.com/shorts/QkkHwKOEuzA",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  12,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto",
+                                           "deportistas",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "lowerlegs_e_3",
+                              "name":  "Flexión dorsal asistida",
+                              "videoUrl":  "https://www.youtube.com/watch?v=EC_XySJ4IBo",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  8,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto",
+                                           "deportistas",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "lowerlegs_e_4",
+                              "name":  "Estiramiento dinámico de pantorrilla",
+                              "videoUrl":  "https://www.youtube.com/shorts/JHuYKrLGN08",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto",
+                                           "deportistas",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "lowerlegs_e_5",
+                              "name":  "Apoyo de talón prolongado",
+                              "videoUrl":  "https://www.youtube.com/shorts/rLez0vcpE00",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  10,
+                                              "frequency":  4,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "bajo-impacto",
+                                           "deportistas",
+                                           "prevención-lesiones"
+                                       ],
+                              "equipment":  "pared",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-anterior"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "lowerlegs",
+        "category":  "fortalecimiento",
+        "exercises":  [
+                          {
+                              "id":  "lowerlegs_f_1",
+                              "name":  "Elevaciones de talón",
+                              "videoUrl":  "https://www.youtube.com/watch?v=zNcD6cq1jnM",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  4,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-posterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "lowerlegs_f_2",
+                              "name":  "Elevaciones unipodales",
+                              "videoUrl":  "https://www.youtube.com/watch?v=oSson9ZZQZY",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  6,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-posterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "lowerlegs_f_3",
+                              "name":  "Saltos suaves en el lugar",
+                              "videoUrl":  "https://www.youtube.com/shorts/SXEtMdW0EBk",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  5,
+                                              "frequency":  2,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-posterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "lowerlegs_f_4",
+                              "name":  "Isométrico de gemelos",
+                              "videoUrl":  "https://www.youtube.com/watch?v=vJmzpIpWmD8",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  7,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-posterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "lowerlegs_f_5",
+                              "name":  "Marcha en puntas",
+                              "videoUrl":  "https://www.youtube.com/watch?v=j5fikntVIaU",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "progresivo"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "gastrocnemio",
+                                                    "sóleo",
+                                                    "tibial-posterior"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "principiante",
+                              "position":  "de-pie"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "leg",
+        "category":  "estiramientos",
+        "exercises":  [
+                          {
+                              "id":  "leg_e_1",
+                              "name":  "Estiramiento de isquiotibiales",
+                              "videoUrl":  "https://www.youtube.com/watch?v=CLQUOJZlJNM",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  4,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "deportistas",
+                                           "mejora-postura",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "isquiotibiales",
+                                                    "cuádriceps",
+                                                    "aductores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          },
+                          {
+                              "id":  "leg_e_2",
+                              "name":  "Estiramiento de cuádriceps",
+                              "videoUrl":  "https://www.youtube.com/watch?v=tLj4xZfemFg",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  6,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "deportistas",
+                                           "mejora-postura",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "isquiotibiales",
+                                                    "cuádriceps",
+                                                    "aductores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "intermedio",
+                              "position":  "acostado-supino"
+                          },
+                          {
+                              "id":  "leg_e_3",
+                              "name":  "Apertura de cadera en suelo",
+                              "videoUrl":  "https://www.youtube.com/shorts/3eFPPyq5DXk",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  8,
+                                              "frequency":  4,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "deportistas",
+                                           "mejora-postura",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "isquiotibiales",
+                                                    "cuádriceps",
+                                                    "aductores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          },
+                          {
+                              "id":  "leg_e_4",
+                              "name":  "Estiramiento de aductores",
+                              "videoUrl":  "https://www.youtube.com/watch?v=t_28IxeuMGE",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "deportistas",
+                                           "mejora-postura",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "isquiotibiales",
+                                                    "cuádriceps",
+                                                    "aductores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          },
+                          {
+                              "id":  "leg_e_5",
+                              "name":  "Flexión profunda asistida",
+                              "videoUrl":  "https://www.youtube.com/watch?v=rk7Id7JMQL0",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  10,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "flexibilidad",
+                                           "tren-inferior",
+                                           "deportistas",
+                                           "mejora-postura",
+                                           "bajo-impacto"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "isquiotibiales",
+                                                    "cuádriceps",
+                                                    "aductores"
+                                                ],
+                              "movementType":  "estático",
+                              "level":  "principiante",
+                              "position":  "acostado-supino"
+                          }
+                      ]
+    },
+    {
+        "groupId":  "leg",
+        "category":  "fortalecimiento",
+        "exercises":  [
+                          {
+                              "id":  "leg_f_1",
+                              "name":  "Sentadilla sin peso",
+                              "videoUrl":  "https://www.youtube.com/watch?v=rkP6rWywdGU",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  14,
+                                              "frequency":  2,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "coordinación"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "glúteo-mayor",
+                                                    "isquiotibiales"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "leg_f_2",
+                              "name":  "Elevación de pierna lateral",
+                              "videoUrl":  "https://www.youtube.com/watch?v=Lab65KTOpRo",
+                              "metrics":  {
+                                              "difficulty":  5,
+                                              "duration":  5,
+                                              "frequency":  3,
+                                              "effectiveness":  3
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "coordinación"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "glúteo-mayor",
+                                                    "isquiotibiales"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "leg_f_3",
+                              "name":  "Zancadas alternas",
+                              "videoUrl":  "https://www.youtube.com/watch?v=-8VRqLJ7hOo",
+                              "metrics":  {
+                                              "difficulty":  4,
+                                              "duration":  9,
+                                              "frequency":  3,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "coordinación"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "glúteo-mayor",
+                                                    "isquiotibiales"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "leg_f_4",
+                              "name":  "Puente de glúteos",
+                              "videoUrl":  "https://www.youtube.com/watch?v=FOE4eoO4nOk",
+                              "metrics":  {
+                                              "difficulty":  2,
+                                              "duration":  8,
+                                              "frequency":  5,
+                                              "effectiveness":  4
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "coordinación"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "glúteo-mayor",
+                                                    "isquiotibiales"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          },
+                          {
+                              "id":  "leg_f_5",
+                              "name":  "Sentadilla isométrica en pared",
+                              "videoUrl":  "https://www.youtube.com/watch?v=xLpqXW2We-A",
+                              "metrics":  {
+                                              "difficulty":  3,
+                                              "duration":  10,
+                                              "frequency":  4,
+                                              "effectiveness":  5
+                                          },
+                              "tags":  [
+                                           "fortalecimiento",
+                                           "equilibrio",
+                                           "tren-inferior",
+                                           "casa",
+                                           "coordinación"
+                                       ],
+                              "equipment":  "sin-equipo",
+                              "targetMuscles":  [
+                                                    "cuádriceps",
+                                                    "glúteo-mayor",
+                                                    "isquiotibiales"
+                                                ],
+                              "movementType":  "dinámico",
+                              "level":  "intermedio",
+                              "position":  "de-pie"
+                          }
+                      ]
+    }
+]

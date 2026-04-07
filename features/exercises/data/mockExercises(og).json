@@ -1,0 +1,347 @@
+[
+  {
+    "groupId": "neck",
+    "category": "movilidad",
+    "exercises": [
+      {
+        "id": "neck_m_1",
+        "name": "Rotaciones cervicales",
+        "videoUrl": "https://www.youtube.com/watch?v=UrRPuBnXuBY"
+      },
+      {
+        "id": "neck_m_2",
+        "name": "Flexión y extensión cervical controlada",
+        "videoUrl": "https://www.youtube.com/watch?v=si09DPKcAyI"
+      }
+    ]
+  },
+  {
+    "groupId": "shoulder",
+    "category": "movilidad",
+    "exercises": [
+      {
+        "id": "shoulder_m_1",
+        "name": "Péndulos",
+        "videoUrl": "https://youtube.com/watch?v=example3"
+      },
+      {
+        "id": "shoulder_m_2",
+        "name": "Círculos de hombro",
+        "videoUrl": "https://youtube.com/watch?v=example4"
+      }
+    ]
+  },
+  {
+    "groupId": "elbow",
+    "category": "movilidad",
+    "exercises": [
+      {
+        "id": "elbow_m_1",
+        "name": "Flexión de codo",
+        "videoUrl": "https://youtube.com/watch?v=example6"
+      },
+      {
+        "id": "elbow_m_2",
+        "name": "Flexión de codo (variación)",
+        "videoUrl": "https://youtube.com/watch?v=example7"
+      }
+    ]
+  },
+  {
+    "groupId": "wrist",
+    "category": "movilidad",
+    "exercises": [
+      {
+        "id": "wrist_m_1",
+        "name": "Rotación de muñeca",
+        "videoUrl": "https://youtube.com/watch?v=example8"
+      },
+      {
+        "id": "wrist_m_2",
+        "name": "Rotación de muñeca",
+        "videoUrl": "https://youtube.com/watch?v=example9"
+      }
+    ]
+  },
+  {
+    "groupId": "hip",
+    "category": "movilidad",
+    "exercises": [
+      {
+        "id": "hip_m_1",
+        "name": "Rotación de cadera",
+        "videoUrl": "https://youtube.com/watch?v=example10"
+      },
+      {
+        "id": "hip_m_2",
+        "name": "Rotación de cadera (izquierda)",
+        "videoUrl": "https://youtube.com/watch?v=example11"
+      }
+    ]
+  },
+  {
+    "groupId": "knee",
+    "category": "movilidad",
+    "exercises": [
+      {
+        "id": "knee_m_1",
+        "name": "Flexión de rodilla",
+        "videoUrl": "https://youtube.com/watch?v=example12"
+      },
+      {
+        "id": "knee_m_2",
+        "name": "Flexión de rodilla (izquierda)",
+        "videoUrl": "https://youtube.com/watch?v=example13"
+      }
+    ]
+  },
+  {
+    "groupId": "ankle",
+    "category": "movilidad",
+    "exercises": [
+      {
+        "id": "ankle_m_1",
+        "name": "Rotación de tobillo",
+        "videoUrl": "https://youtube.com/watch?v=example14"
+      },
+      {
+        "id": "ankle_m_2",
+        "name": "Rotación de tobillo (izquierda)",
+        "videoUrl": "https://youtube.com/watch?v=example15"
+      }
+    ]
+  },
+  
+  {
+    "groupId": "chest",
+    "category": "estiramientos",
+    "exercises": [
+      {
+        "id": "chest_e_1",
+        "name": "Estiramiento pectoral",
+        "videoUrl": "https://youtube.com/watch?v=example16"
+      },
+      {
+        "id": "chest_e_2",
+        "name": "Estiramiento en marco de puerta",
+        "videoUrl": "https://youtube.com/watch?v=example17"
+      }
+    ]
+  },
+  {
+    "groupId": "chest",
+    "category": "fortalecimiento",
+    "exercises": [
+      {
+        "id": "chest_f_1",
+        "name": "Lagartijas",
+        "videoUrl": "https://youtube.com/watch?v=example16"
+      },
+      {
+        "id": "chest_f_2",
+        "name": "Xd",
+        "videoUrl": "https://youtube.com/watch?v=example17"
+      }
+    ]
+  },
+  {
+    "groupId": "abdomen",
+    "category": "estiramientos",
+    "exercises": [
+      {
+        "id": "abdomen_e_1",
+        "name": "Estiramiento cobra",
+        "videoUrl": "https://youtube.com/watch?v=example16"
+      },
+      {
+        "id": "abdomen_e_2",
+        "name": "Estiramiento de arco",
+        "videoUrl": "https://youtube.com/watch?v=example17"
+      }
+    ]
+  },
+  {
+    "groupId": "abdomen",
+    "category": "fortalecimiento",
+    "exercises": [
+      {
+        "id": "abdomen_f_1",
+        "name": "Plancha frontal",
+        "videoUrl": "https://youtube.com/watch?v=example16"
+      },
+      {
+        "id": "abdomen_f_2",
+        "name": "Crunch básico",
+        "videoUrl": "https://youtube.com/watch?v=example17"
+      }
+    ]
+  },
+
+
+
+
+  
+  {
+    "groupId": "back",
+    "category": "estiramientos",
+    "exercises": [
+      {
+        "id": "back_e_1",
+        "name": "Estiramiento de espalda baja",
+        "videoUrl": "https://youtube.com/watch?v=example18"
+      },
+      {
+        "id": "back_e_2",
+        "name": "Gato-vaca",
+        "videoUrl": "https://youtube.com/watch?v=example19"
+      }
+    ]
+  },
+  {
+    "groupId": "back",
+    "category": "fortalecimiento",
+    "exercises": [
+      {
+        "id": "back_f_1",
+        "name": "Remo con banda",
+        "videoUrl": "https://youtube.com/watch?v=example30"
+      },
+      {
+        "id": "back_f_2",
+        "name": "Superman",
+        "videoUrl": "https://youtube.com/watch?v=example31"
+      }
+    ]
+  },
+  {
+    "groupId": "arm",
+    "category": "estiramientos",
+    "exercises": [
+      {
+        "id": "arm_e_1",
+        "name": "Estiramiento de tríceps",
+        "videoUrl": "https://youtube.com/watch?v=example20"
+      },
+      {
+        "id": "arm_e_2",
+        "name": "Estiramiento de bíceps",
+        "videoUrl": "https://youtube.com/watch?v=example21"
+      }
+    ]
+  },
+
+
+  {
+    "groupId": "arm",
+    "category": "fortalecimiento",
+    "exercises": [
+      {
+        "id": "arm_f_1",
+        "name": "Curl de bíceps",
+        "videoUrl": "https://youtube.com/watch?v=example32"
+      },
+      {
+        "id": "arm_f_2",
+        "name": "Fondos de tríceps",
+        "videoUrl": "https://youtube.com/watch?v=example33"
+      },
+      {
+        "id": "arm_f_3",
+        "name": "Curl de bíceps (variación)",
+        "videoUrl": "https://youtube.com/watch?v=example34"
+      }
+    ]
+  },
+  {
+    "groupId": "forearms",
+    "category": "estiramientos",
+    "exercises": [
+      {
+        "id": "forearms_e_1",
+        "name": "Estiramiento de antebrazo",
+        "videoUrl": "https://youtube.com/watch?v=example40"
+      }
+    ]
+  },
+  {
+    "groupId": "forearms",
+    "category": "fortalecimiento",
+    "exercises": [
+      {
+        "id": "forearms_f_1",
+        "name": "Fortalecimiento de antebrazo",
+        "videoUrl": "https://youtube.com/watch?v=example41"
+      }
+    ]
+  },
+  {
+    "groupId": "lowerlegs",
+    "category": "estiramientos",
+    "exercises": [
+      {
+        "id": "lowerlegs_e_1",
+        "name": "Estiramiento de pantorrilla (pierna inferior)",
+        "videoUrl": "https://youtube.com/watch?v=example42"
+      }
+    ]
+  },
+  {
+    "groupId": "lowerlegs",
+    "category": "fortalecimiento",
+    "exercises": [
+      {
+        "id": "lowerlegs_f_1",
+        "name": "Elevación de talones",
+        "videoUrl": "https://youtube.com/watch?v=example43"
+      }
+    ]
+  },
+  {
+    "groupId": "leg",
+    "category": "estiramientos",
+    "exercises": [
+      {
+        "id": "leg_e_1",
+        "name": "Estiramiento de isquiotibiales",
+        "videoUrl": "https://youtube.com/watch?v=example23"
+      },
+      {
+        "id": "leg_e_2",
+        "name": "Estiramiento de cuádriceps",
+        "videoUrl": "https://youtube.com/watch?v=example24"
+      }
+    ]
+  },
+  {
+    "groupId": "leg",
+    "category": "fortalecimiento",
+    "exercises": [
+      {
+        "id": "leg_f_1",
+        "name": "Extensión de pierna",
+        "videoUrl": "https://youtube.com/watch?v=example35"
+      },
+      {
+        "id": "leg_f_2",
+        "name": "Sentadillas",
+        "videoUrl": "https://youtube.com/watch?v=example36"
+      },
+      {
+        "id": "leg_f_3",
+        "name": "Zancadas",
+        "videoUrl": "https://youtube.com/watch?v=example37"
+      },
+      {
+        "id": "leg_f_4",
+        "name": "Extensión de pierna (izquierda)",
+        "videoUrl": "https://youtube.com/watch?v=example38"
+      },
+      {
+        "id": "leg_f_5",
+        "name": "Zancadas (izquierda)",
+        "videoUrl": "https://youtube.com/watch?v=example39"
+      }
+    ]
+  }
+]
+ 
