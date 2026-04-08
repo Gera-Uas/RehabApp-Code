@@ -1,13 +1,11 @@
 import { PrismaClient } from '@prisma/client'
 import * as fs from 'fs'
 import * as path from 'path'
-import { fileURLToPath } from 'url'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const prisma = new PrismaClient({
-  datasourceUrl: process.env.DATABASE_URL
-})
+import { PrismaClient } from '@prisma/client';
+import { createPrismaAdapter } from '@prisma/adapter-js';
+const adapter = createPrismaAdapter(global);
+const prisma = new PrismaClient({ adapter })
 
 interface ExerciseData {
   groupId: string
@@ -16,18 +14,18 @@ interface ExerciseData {
     id: string
     name: string
     videoUrl: string
-    metrics?: {
+    metrics: {
       difficulty: number
       duration: number
       effectiveness: number
       frequency: number
     }
-    tags?: string[]
-    equipment?: string
-    targetMuscles?: string[]
-    movementType?: string
-    level?: string
-    position?: string
+    tags: string[]
+    equipment: string
+    targetMuscles: string[]
+    movementType: string
+    level: string
+    position: string
   }>
 }
 
@@ -35,7 +33,7 @@ async function main() {
   console.log('🌱 Iniciando seed de ejercicios...')
 
   // Leer mockExercises.json
-  const mockPath = path.join(__dirname, '../features/exercises/data/mockExercises(og).json')
+  const mockPath = path.join(__dirname, '../features/exercises/data/mockExercises.json')
   const rawData = fs.readFileSync(mockPath, 'utf-8')
   const mockExercises: ExerciseData[] = JSON.parse(rawData)
 
@@ -45,16 +43,14 @@ async function main() {
   const allTags = new Set<string>()
   mockExercises.forEach(group => {
     group.exercises.forEach(ex => {
-      if (ex.tags) {
-        ex.tags.forEach(tag => allTags.add(tag))
-      }
+      ex.tags.forEach(tag => allTags.add(tag))
     })
   })
 
   console.log(`🏷️ Tags únicos encontrados: ${allTags.size}`)
 
   // Crear tags primero
-  console.log('🔌 Creando tags...')
+  console.log('📌 Creando tags...')
   const createdTags: Record<string, string> = {}
   for (const tagName of allTags) {
     const tag = await prisma.exerciseTag.upsert({
@@ -103,58 +99,58 @@ async function main() {
             id: exercise.id,
             name: exercise.name,
             videoUrl: exercise.videoUrl,
-            level: exercise.level ? (exercise.level.replace(/-/g, '_') as any) : 'principiante',
-            movementType: exercise.movementType ? (exercise.movementType.replace(/-/g, '_') as any) : 'controlado',
-            position: exercise.position ? (exercise.position.replace(/-/g, '_') as any) : 'sentado',
-            equipment: exercise.equipment ? (exercise.equipment.replace(/-/g, '_') as any) : 'sin_equipo',
-            metrics: exercise.metrics || { difficulty: 1, duration: 5, effectiveness: 3, frequency: 3 },
-            targetMuscles: exercise.targetMuscles || [],
+            level: exercise.level.replace(/-/g, '_') as any,
+            movementType: exercise.movementType.replace(/-/g, '_') as any,
+            position: exercise.position.replace(/-/g, '_') as any,
+            equipment: exercise.equipment.replace(/-/g, '_') as any,
+            metrics: exercise.metrics,
+            targetMuscles: exercise.targetMuscles,
             groupId: exerciseGroup.id,
           },
         })
 
         // Crear relaciones de tags
-        if (exercise.tags) {
-          for (const tagName of exercise.tags) {
-            const tagId = createdTags[tagName]
-            if (tagId) {
-              await prisma.exerciseTagRelation.upsert({
-                where: {
-                  exerciseId_tagId: {
-                    exerciseId: exercise.id,
-                    tagId: tagId,
-                  },
-                },
-                update: {},
-                create: {
+        for (const tagName of exercise.tags) {
+          const tagId = createdTags[tagName]
+          if (tagId) {
+            await prisma.exerciseTagRelation.upsert({
+              where: {
+                exerciseId_tagId: {
                   exerciseId: exercise.id,
                   tagId: tagId,
                 },
-              })
-            }
+              },
+              update: {},
+              create: {
+                exerciseId: exercise.id,
+                tagId: tagId,
+              },
+            })
           }
         }
 
         totalExercises++
         console.log(`  ✓ ${exercise.name}`)
       } catch (err) {
-        console.error(`  ✗ Error al crear ${exercise.id}:`, err)
+        console.error(`  ❌ Error al insertar ${exercise.id}:`, err)
       }
     }
   }
 
   console.log(`\n✅ Seed completado!`)
   console.log(`📊 Totales:`)
-  console.log(`  - Grupos de ejercicios: ${mockExercises.length}`)
-  console.log(`  - Ejercicios seeded: ${totalExercises}`)
-  console.log(`  - Tags creados: ${Object.keys(createdTags).length}`)
+  console.log(`  - Grupos: ${mockExercises.length}`)
+  console.log(`  - Ejercicios: ${totalExercises}`)
+  console.log(`  - Tags: ${allTags.size}`)
 }
 
 main()
-  .catch(err => {
-    console.error('Error durante seed:', err)
+  .catch(e => {
+    console.error('❌ Error durante seed:', e)
     process.exit(1)
   })
   .finally(async () => {
     await prisma.$disconnect()
   })
+
+

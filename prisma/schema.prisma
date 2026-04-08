@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Level {
+  principiante
+  intermedio
+  avanzado
+}
+
+enum Category {
+  movilidad
+  estiramientos
+  fortalecimiento
+}
+
+enum MovementType {
+  controlado
+  dinamico
+  pendular
+  estatico
+  isometrico
+}
+
+enum Position {
+  sentado
+  de_pie
+  cuatro_puntos
+  acostado_supino
+  acostado_prono
+  inclinado
+}
+
+enum Equipment {
+  sin_equipo
+  pared
+  banda_elastica
+  pesas_ligeras
+}
+
+model ExerciseGroup {
+  id        String   @id @default(cuid())
+  groupId   String
+  category  Category
+  exercises Exercise[]
+  createdAt DateTime @default(now())
+  
+  @@unique([groupId, category])
+  @@index([groupId])
+}
+
+model Exercise {
+  id              String   @id
+  name            String
+  videoUrl        String   @db.Text
+  level           Level
+  movementType    MovementType
+  position        Position
+  equipment       Equipment
+  
+  metrics         Json
+  targetMuscles   Json
+  
+  groupId         String
+  group           ExerciseGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  
+  tags            ExerciseTagRelation[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  @@index([groupId])
+}
+
+model ExerciseTag {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  exercises ExerciseTagRelation[]
+  
+  @@index([name])
+}
+
+model ExerciseTagRelation {
+  exerciseId String
+  tagId      String
+  
+  exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  tag        ExerciseTag @relation(fields: [tagId], references: [id], onDelete: Cascade)
+  
+  @@id([exerciseId, tagId])
+  @@index([tagId])
+}

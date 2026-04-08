@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+﻿import { PrismaClient } from '@prisma/client'
 import * as fs from 'fs'
 import * as path from 'path'
 import { fileURLToPath } from 'url'
@@ -31,12 +31,35 @@ interface ExerciseData {
   }>
 }
 
+function normalizeValue(value: string | undefined): string {
+  if (!value) return ''
+  return value
+    .toLowerCase()
+    .replace(/á/g, 'a')
+    .replace(/é/g, 'e')
+    .replace(/í/g, 'i')
+    .replace(/ó/g, 'o')
+    .replace(/ú/g, 'u')
+    .replace(/ñ/g, 'n')
+    .replace(/\s+/g, '_')
+    .replace(/-/g, '_')
+}
+
+function getDefaultEnumValue(field: 'level' | 'movementType' | 'position' | 'equipment'): string {
+  const defaults: Record<string, string> = {
+    level: 'principiante',
+    movementType: 'controlado',
+    position: 'sentado',
+    equipment: 'sin_equipo'
+  }
+  return defaults[field] || ''
+}
+
 async function main() {
   console.log('🌱 Iniciando seed de ejercicios...')
 
-  // Leer mockExercises.json
-  const mockPath = path.join(__dirname, '../features/exercises/data/mockExercises(og).json')
-  const rawData = fs.readFileSync(mockPath, 'utf-8')
+  const mockPath = path.join(__dirname, '../features/exercises/data/mockExercises(01).json')
+  const rawData = fs.readFileSync(mockPath, 'utf-8').replace(/^\uFEFF/, '')
   const mockExercises: ExerciseData[] = JSON.parse(rawData)
 
   console.log(`📂 Leyendo ${mockExercises.length} grupos de ejercicios...`)
@@ -54,7 +77,7 @@ async function main() {
   console.log(`🏷️ Tags únicos encontrados: ${allTags.size}`)
 
   // Crear tags primero
-  console.log('🔌 Creando tags...')
+  console.log('📌 Creando tags...')
   const createdTags: Record<string, string> = {}
   for (const tagName of allTags) {
     const tag = await prisma.exerciseTag.upsert({
@@ -89,13 +112,17 @@ async function main() {
 
     // Insertar ejercicios
     for (const exercise of group.exercises) {
-      // Validar campos obligatorios
       if (!exercise.id || !exercise.name) {
         console.warn(`  ⚠️ Ejercicio inválido saltado: ${exercise.id}`)
         continue
       }
 
       try {
+        const level = normalizeValue(exercise.level) || getDefaultEnumValue('level')
+        const movementType = normalizeValue(exercise.movementType) || getDefaultEnumValue('movementType')
+        const position = normalizeValue(exercise.position) || getDefaultEnumValue('position')
+        const equipment = normalizeValue(exercise.equipment) || getDefaultEnumValue('equipment')
+
         const createdExercise = await prisma.exercise.upsert({
           where: { id: exercise.id },
           update: {},
@@ -103,10 +130,10 @@ async function main() {
             id: exercise.id,
             name: exercise.name,
             videoUrl: exercise.videoUrl,
-            level: exercise.level ? (exercise.level.replace(/-/g, '_') as any) : 'principiante',
-            movementType: exercise.movementType ? (exercise.movementType.replace(/-/g, '_') as any) : 'controlado',
-            position: exercise.position ? (exercise.position.replace(/-/g, '_') as any) : 'sentado',
-            equipment: exercise.equipment ? (exercise.equipment.replace(/-/g, '_') as any) : 'sin_equipo',
+            level: level as any,
+            movementType: movementType as any,
+            position: position as any,
+            equipment: equipment as any,
             metrics: exercise.metrics || { difficulty: 1, duration: 5, effectiveness: 3, frequency: 3 },
             targetMuscles: exercise.targetMuscles || [],
             groupId: exerciseGroup.id,
@@ -138,23 +165,23 @@ async function main() {
         totalExercises++
         console.log(`  ✓ ${exercise.name}`)
       } catch (err) {
-        console.error(`  ✗ Error al crear ${exercise.id}:`, err)
+        console.error(`  ❌ Error al insertar ${exercise.id}:`, err)
       }
     }
   }
 
   console.log(`\n✅ Seed completado!`)
   console.log(`📊 Totales:`)
-  console.log(`  - Grupos de ejercicios: ${mockExercises.length}`)
-  console.log(`  - Ejercicios seeded: ${totalExercises}`)
-  console.log(`  - Tags creados: ${Object.keys(createdTags).length}`)
+  console.log(`  - Grupos: ${mockExercises.length}`)
+  console.log(`  - Ejercicios: ${totalExercises}`)
+  console.log(`  - Tags: ${allTags.size}`)
 }
 
 main()
-  .catch(err => {
-    console.error('Error durante seed:', err)
-    process.exit(1)
-  })
   .finally(async () => {
     await prisma.$disconnect()
+  })
+  .catch((e) => {
+    console.error('❌ Error durante seed:', e)
+    process.exit(1)
   })

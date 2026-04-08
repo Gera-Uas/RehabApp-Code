@@ -4,7 +4,6 @@ import { useEffect, useState, useCallback, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ChevronRight, ChevronLeft, Settings } from "lucide-react"
 import type { Category, Exercise, ExerciseData } from "@/src/types"
-import mockExercises from "../data/mockExercises.json"
 import BODY_ZONES from "@/src/data/bodyZones"
 import ExercisePlayer from "@features/exercises/components/exercise-player"
 import { SAWCalculator } from "@/lib/mcdm/saw"
@@ -38,36 +37,7 @@ export default function ExerciseModal({
   const { getNormalizedWeights, weights } = useScoringStore()
   const contentRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    // Always run when selectedZone or category change to keep state in sync
-    if (selectedZone && category) {
-      const zoneConfig = BODY_ZONES[selectedZone]
-      const groupId = zoneConfig?.group || selectedZone
-
-      const found = (mockExercises as ExerciseData[]).find(
-        (data) => data.groupId === groupId && data.category === category,
-      )
-
-      if (found) {
-        setExercises(found.exercises)
-        setZoneData(found)
-        setZoneName(zoneConfig?.name || selectedZone)
-        // Calcular ranking con SAW
-        calculateRanking(found.exercises)
-      } else {
-        setExercises([])
-        setZoneData(null)
-        setZoneName(zoneConfig?.name || selectedZone)
-        setRankedExercises(new Map())
-      }
-    } else {
-      setExercises([])
-      setZoneData(null)
-      setZoneName("")
-      setRankedExercises(new Map())
-    }
-  }, [selectedZone, category])
-
+  // Define calculateRanking BEFORE useEffect that uses it
   const calculateRanking = useCallback((exercisesList: Exercise[]) => {
     const normalizedWeights = getNormalizedWeights()
 
@@ -119,6 +89,61 @@ export default function ExerciseModal({
     const rankingMap = new Map(results.map((r) => [r.alternativeId, r.ranking]))
     setRankedExercises(rankingMap)
   }, [getNormalizedWeights])
+
+  useEffect(() => {
+    // Fetch exercises from API when selectedZone or category change
+    if (selectedZone && category) {
+      const zoneConfig = BODY_ZONES[selectedZone]
+      const groupId = zoneConfig?.group || selectedZone
+
+      const fetchData = async () => {
+        try {
+          const query = new URLSearchParams({
+            groupId: groupId,
+            category: category,
+          }).toString()
+          
+          const response = await fetch(`/api/exercises?${query}`, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+          })
+
+          if (!response.ok) {
+            throw new Error('Failed to fetch exercises')
+          }
+
+          const result = await response.json()
+          const data = result.data || []
+
+          setExercises(data)
+          setZoneData({
+            groupId: groupId,
+            category: category,
+            exercises: data
+          })
+          setZoneName(zoneConfig?.name || selectedZone)
+          
+          // Calcular ranking con SAW
+          if (data.length > 0) {
+            calculateRanking(data)
+          }
+        } catch (error) {
+          console.error('Error fetching exercises:', error)
+          setExercises([])
+          setZoneData(null)
+          setZoneName(zoneConfig?.name || selectedZone)
+          setRankedExercises(new Map())
+        }
+      }
+
+      fetchData()
+    } else {
+      setExercises([])
+      setZoneData(null)
+      setZoneName("")
+      setRankedExercises(new Map())
+    }
+  }, [selectedZone, category, calculateRanking])
 
   // Recalcular ranking cuando cambien los pesos
   useEffect(() => {

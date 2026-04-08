@@ -1,11 +1,10 @@
 "use client"
 
-import { useMemo } from "react"
+import { useMemo, useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Sparkles, TrendingUp } from "lucide-react"
-import type { Exercise, ExerciseData } from "@/src/types"
+import type { Exercise } from "@/src/types"
 import { ContentBasedRecommender } from "@/lib/recommendations/content-based"
-import mockExercises from "@features/exercises/data/mockExercises.json"
 
 interface RecommendedExercisesProps {
   currentExercise: Exercise
@@ -14,11 +13,38 @@ interface RecommendedExercisesProps {
 }
 
 export function RecommendedExercises({ currentExercise, onExerciseSelect, onScrollToTop }: RecommendedExercisesProps) {
+  const [allExercises, setAllExercises] = useState<Exercise[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  // Fetch all exercises from API
+  useEffect(() => {
+    const fetchAllExercises = async () => {
+      try {
+        const response = await fetch('/api/exercises?limit=200', {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch exercises')
+        }
+
+        const result = await response.json()
+        setAllExercises(result.data || [])
+      } catch (error) {
+        console.error('Error fetching exercises:', error)
+        setAllExercises([])
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchAllExercises()
+  }, [])
+
   const recommendations = useMemo(() => {
-    // Obtener todos los ejercicios disponibles
-    const allExercises: Exercise[] = []
-    for (const group of mockExercises as ExerciseData[]) {
-      allExercises.push(...group.exercises)
+    if (allExercises.length === 0) {
+      return { similar: [], complementary: [] }
     }
 
     // Calcular recomendaciones
@@ -27,7 +53,7 @@ export function RecommendedExercises({ currentExercise, onExerciseSelect, onScro
     const complementary = recommender.findComplementary(currentExercise, allExercises, 2)
 
     return { similar, complementary }
-  }, [currentExercise.id])
+  }, [currentExercise.id, allExercises])
 
   if (recommendations.similar.length === 0 && recommendations.complementary.length === 0) {
     return null
