@@ -2,6 +2,7 @@
 import * as fs from 'fs'
 import * as path from 'path'
 import { fileURLToPath } from 'url'
+import bcryptjs from 'bcryptjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -55,8 +56,73 @@ function getDefaultEnumValue(field: 'level' | 'movementType' | 'position' | 'equ
   return defaults[field] || ''
 }
 
+async function seedUsers() {
+  console.log('\n👥 Creando usuarios de prueba...')
+
+  const testUsers = [
+    {
+      name: 'Admin User',
+      email: 'admin@test.com',
+      password: 'admin123',
+      role: 'ADMIN' as const,
+    },
+    {
+      name: 'Fisioterapeuta Test',
+      email: 'fisio@test.com',
+      password: 'fisio123',
+      role: 'FISIOTERAPEUTA' as const,
+    },
+    {
+      name: 'Paciente 1',
+      email: 'patient1@test.com',
+      password: 'patient123',
+      role: 'PACIENTE' as const,
+    },
+    {
+      name: 'Paciente 2',
+      email: 'patient2@test.com',
+      password: 'patient123',
+      role: 'PACIENTE' as const,
+    },
+  ]
+
+  for (const userData of testUsers) {
+    try {
+      const existingUser = await prisma.user.findUnique({
+        where: { email: userData.email },
+      })
+
+      if (!existingUser) {
+        const hashedPassword = await bcryptjs.hash(userData.password, 10)
+        await prisma.user.create({
+          data: {
+            name: userData.name,
+            email: userData.email,
+            password: hashedPassword,
+            role: userData.role,
+          },
+        })
+        console.log(`  ✓ Usuario creado: ${userData.email} (${userData.role})`)
+      } else {
+        console.log(`  ⓘ Usuario ya existe: ${userData.email}`)
+      }
+    } catch (err) {
+      console.error(`  ❌ Error al crear usuario ${userData.email}:`, err)
+    }
+  }
+
+  console.log('✅ Usuarios listos para testing:')
+  console.log('  Admin: admin@test.com / admin123')
+  console.log('  Fisio: fisio@test.com / fisio123')
+  console.log('  Paciente 1: patient1@test.com / patient123')
+  console.log('  Paciente 2: patient2@test.com / patient123')
+}
+
 async function main() {
   console.log('🌱 Iniciando seed de ejercicios...')
+
+  // Crear usuarios de prueba primero
+  await seedUsers()
 
   const mockPath = path.join(__dirname, '../features/exercises/data/mockExercises(01).json')
   const rawData = fs.readFileSync(mockPath, 'utf-8').replace(/^\uFEFF/, '')

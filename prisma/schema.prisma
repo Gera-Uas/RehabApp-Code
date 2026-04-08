@@ -43,6 +43,12 @@ enum Equipment {
   pesas_ligeras
 }
 
+enum UserRole {
+  ADMIN
+  FISIOTERAPEUTA
+  PACIENTE
+}
+
 model ExerciseGroup {
   id        String   @id @default(cuid())
   groupId   String
@@ -62,17 +68,18 @@ model Exercise {
   movementType    MovementType
   position        Position
   equipment       Equipment
-  
+
   metrics         Json
   targetMuscles   Json
-  
+
   groupId         String
   group           ExerciseGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
-  
+
   tags            ExerciseTagRelation[]
+  recommendations RecommendedExercise[]
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
-  
+
   @@index([groupId])
 }
 
@@ -87,10 +94,58 @@ model ExerciseTag {
 model ExerciseTagRelation {
   exerciseId String
   tagId      String
-  
+
   exercise   Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
   tag        ExerciseTag @relation(fields: [tagId], references: [id], onDelete: Cascade)
-  
+
   @@id([exerciseId, tagId])
   @@index([tagId])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // hashed con bcryptjs
+  name      String
+  role      UserRole
+
+  // Relación 1-a-1: solo si es PACIENTE
+  fisioId   String?
+  fisio     User?    @relation("PatientFisio", fields: [fisioId], references: [id], onDelete: SetNull)
+  patients  User[]   @relation("PatientFisio")
+
+  // Recomendaciones que recibe (solo PACIENTE)
+  recommendations ExerciseRecommendation?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+  @@index([fisioId])
+}
+
+model ExerciseRecommendation {
+  id        String   @id @default(cuid())
+  patientId String   @unique
+  exercises RecommendedExercise[]
+
+  patient   User     @relation(fields: [patientId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model RecommendedExercise {
+  id               String   @id @default(cuid())
+  recommendationId String
+  exerciseId       String
+  order            Int
+
+  recommendation   ExerciseRecommendation @relation(fields: [recommendationId], references: [id], onDelete: Cascade)
+  exercise         Exercise               @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+
+  @@unique([recommendationId, exerciseId])
+  @@index([recommendationId])
+  @@index([exerciseId])
 }

@@ -2,6 +2,8 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter, Poppins } from "next/font/google"
 import "./globals.css"
+import { AuthSessionProvider } from "@/components/AuthSessionProvider"
+import { Navbar } from "@/components/Navbar"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,7 +34,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <AuthSessionProvider>
+          <Navbar />
+          {children}
+        </AuthSessionProvider>
+      </body>
     </html>
   )
 }
