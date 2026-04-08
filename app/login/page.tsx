@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,16 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { data: session } = useSession();
+
+  const getRoleRoute = (role?: string) => {
+    const roleMap: Record<string, string> = {
+      ADMIN: "/admin",
+      FISIOTERAPEUTA: "/fisio",
+      PACIENTE: "/patient",
+    };
+    return roleMap[role || ""] || "/";
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,8 +40,11 @@ export default function LoginPage() {
       if (result?.error) {
         setError(result.error);
       } else if (result?.ok) {
-        router.push("/");
-        router.refresh();
+        // Esperar a que la sesión se actualice
+        setTimeout(() => {
+          router.push(getRoleRoute(session?.user?.role));
+          router.refresh();
+        }, 500);
       }
     } catch (err) {
       setError("Error al iniciar sesión");

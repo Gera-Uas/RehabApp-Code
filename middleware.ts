@@ -24,6 +24,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
+  // Redireccionar "/" según rol
+  if (pathname === "/") {
+    const roleMap: Record<string, string> = {
+      ADMIN: "/admin",
+      FISIOTERAPEUTA: "/fisio",
+      PACIENTE: "/patient",
+    };
+    const rolePath = roleMap[token.role as string] || "/";
+    return NextResponse.redirect(new URL(rolePath, request.url));
+  }
+
   // Rutas protegidas por rol
   if (pathname.startsWith("/admin")) {
     if (token.role !== "ADMIN") {

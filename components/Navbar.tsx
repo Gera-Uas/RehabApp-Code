@@ -22,15 +22,6 @@ export function Navbar() {
     return roleMap[role || ""] || role || "";
   };
 
-  const getRolePath = (role?: string) => {
-    const pathMap: Record<string, string> = {
-      ADMIN: "/admin",
-      FISIOTERAPEUTA: "/fisio",
-      PACIENTE: "/patient",
-    };
-    return pathMap[role || ""] || "/";
-  };
-
   if (!session?.user) {
     return null;
   }
@@ -44,13 +35,6 @@ export function Navbar() {
           </Link>
 
           <div className="flex items-center gap-6">
-            <Link
-              href={getRolePath(session.user.role)}
-              className="hover:text-blue-200"
-            >
-              Dashboard
-            </Link>
-
             <div className="text-sm">
               <p className="font-semibold">{session.user.name}</p>
               <p className="text-blue-100">{getRoleDisplay(session.user.role)}</p>
