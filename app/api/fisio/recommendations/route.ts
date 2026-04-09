@@ -140,7 +140,13 @@ export async function POST(request: NextRequest) {
                 id: true,
                 name: true,
                 videoUrl: true,
-                metrics: true
+                metrics: true,
+                group: {
+                  select: {
+                    groupId: true,
+                    category: true
+                  }
+                }
               }
             }
           },

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Search, Plus, Trash2, ChevronDown, Heart, Loader2 } from "lucide-react"
+import { X, Search, Plus, Trash2, ChevronDown, Heart, Loader2, ArrowUp, ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import type { Exercise } from "@/src/types"
@@ -56,7 +56,17 @@ export default function RecommendationsSidebar({
     }
   }, [])
 
-  // Buscar pacientes en tiempo real
+  // Limpiar error automáticamente después de 4 segundos
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError("")
+      }, 4000)
+      return () => clearTimeout(timer)
+    }
+  }, [error])
+
+  // Buscar pacientes en tiempo real cuando cambia searchQuery
   useEffect(() => {
     if (searchQuery.length > 0) {
       searchPatients()
@@ -86,11 +96,13 @@ export default function RecommendationsSidebar({
 
   const searchPatients = async () => {
     setIsSearching(true)
+    setError("")
     try {
       const response = await fetch(`/api/fisio/search-patients?q=${encodeURIComponent(searchQuery)}`)
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ error: 'Error desconocido' }))
+        console.error('Search error response:', errorData)
         throw new Error(errorData.error || `Error ${response.status} al buscar pacientes`)
       }
 
@@ -165,12 +177,16 @@ export default function RecommendationsSidebar({
 
       // Obtener ejercicios actuales
       const currentExercises = patient.recommendations?.exercises || []
+
+      // Verificar si el ejercicio ya está asignado
+      if (currentExercises.some(e => e.exerciseId === selectedExercise.id)) {
+        setError(`El ejercicio "${selectedExercise.name}" ya está asignado a este paciente`)
+        return
+      }
+
       const allExercises = [
         ...currentExercises,
-        // Evitar duplicados
-        ...(currentExercises.some(e => e.exerciseId === selectedExercise.id)
-          ? []
-          : [{ exerciseId: selectedExercise.id, exercise: { id: selectedExercise.id, name: selectedExercise.name } }])
+        { exerciseId: selectedExercise.id, exercise: { id: selectedExercise.id, name: selectedExercise.name } }
       ]
 
       const payload = {
@@ -199,15 +215,117 @@ export default function RecommendationsSidebar({
           p.id === patientId
             ? {
               ...p,
-              recommendations: result.data.recommendations
+              recommendations: result.data
             }
             : p
         )
       )
 
+      setError("") // Limpiar errores si había alguno
       alert("Ejercicio agregado exitosamente")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error desconocido")
+    }
+  }
+
+  const handleRemoveExerciseFromPatient = async (patientId: string, exerciseIdToRemove: string) => {
+    try {
+      const patient = patients.find(p => p.id === patientId)
+      if (!patient) return
+
+      // Filtrar el ejercicio a eliminar
+      const updatedExercises = (patient.recommendations?.exercises || [])
+        .filter(e => e.exerciseId !== exerciseIdToRemove)
+
+      const payload = {
+        patientId,
+        exercises: updatedExercises.map((ex, idx) => ({
+          exerciseId: typeof ex === 'object' ? (ex as any).exerciseId || ex.id : ex,
+          order: idx + 1
+        }))
+      }
+
+      const response = await fetch("/api/fisio/recommendations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error("Error al eliminar ejercicio")
+      }
+
+      const result = await response.json()
+
+      // Actualizar lista local
+      setPatients(
+        patients.map(p =>
+          p.id === patientId
+            ? {
+              ...p,
+              recommendations: result.data
+            }
+            : p
+        )
+      )
+
+      setError("")
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al eliminar ejercicio")
+    }
+  }
+
+  const handleMoveExercise = async (patientId: string, exerciseIndex: number, direction: 'up' | 'down') => {
+    try {
+      const patient = patients.find(p => p.id === patientId)
+      if (!patient) return
+
+      const exercises = patient.recommendations?.exercises || []
+
+      // Validar que el índice es válido
+      if (direction === 'up' && exerciseIndex === 0) return
+      if (direction === 'down' && exerciseIndex === exercises.length - 1) return
+
+      // Crear copia y intercambiar
+      const newExercises = [...exercises]
+      const swapIndex = direction === 'up' ? exerciseIndex - 1 : exerciseIndex + 1
+      [newExercises[exerciseIndex], newExercises[swapIndex]] = [newExercises[swapIndex], newExercises[exerciseIndex]]
+
+      const payload = {
+        patientId,
+        exercises: newExercises.map((ex, idx) => ({
+          exerciseId: typeof ex === 'object' ? (ex as any).exerciseId || ex.id : ex,
+          order: idx + 1
+        }))
+      }
+
+      const response = await fetch("/api/fisio/recommendations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error("Error al mover ejercicio")
+      }
+
+      const result = await response.json()
+
+      // Actualizar lista local
+      setPatients(
+        patients.map(p =>
+          p.id === patientId
+            ? {
+              ...p,
+              recommendations: result.data
+            }
+            : p
+        )
+      )
+
+      setError("")
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al mover ejercicio")
     }
   }
 
@@ -382,15 +500,67 @@ export default function RecommendationsSidebar({
                                 {/* Ejercicios Recomendados */}
                                 {patient.recommendations?.exercises && patient.recommendations.exercises.length > 0 ? (
                                   <div>
-                                    <h4 className="font-semibold text-sm text-slate-900 mb-2">
+                                    <h4 className="font-semibold text-sm text-slate-900 mb-3">
                                       Ejercicios Recomendados:
                                     </h4>
-                                    <div className="space-y-2">
-                                      {patient.recommendations.exercises.map((ex, idx) => (
-                                        <div key={`${ex.exerciseId}-${idx}`} className="p-2 bg-white rounded-lg text-sm">
-                                          <span className="text-slate-700">{idx + 1}. {ex.exercise.name}</span>
-                                        </div>
-                                      ))}
+                                    {/* Tabla */}
+                                    <div className="overflow-x-auto border border-slate-200 rounded-lg">
+                                      <table className="w-full text-sm">
+                                        <thead className="bg-slate-100 border-b border-slate-200">
+                                          <tr>
+                                            <th className="text-left px-4 py-2 font-semibold text-slate-700">Categoría</th>
+                                            <th className="text-left px-4 py-2 font-semibold text-slate-700">Zona Muscular</th>
+                                            <th className="text-left px-4 py-2 font-semibold text-slate-700">Ejercicio</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          {patient.recommendations.exercises.map((ex, idx) => {
+                                            const category = (ex.exercise as any).group?.category || "N/A"
+                                            const zone = (ex.exercise as any).group?.groupId || "N/A"
+                                            const categoryLabel = category === "estiramientos" ? "Estiramiento"
+                                              : category === "movilidad" ? "Movilidad"
+                                              : category === "fortalecimiento" ? "Fortalecimiento"
+                                              : category
+
+                                            return (
+                                              <tr key={`${ex.exerciseId}-${idx}`} className="border-b border-slate-200 hover:bg-slate-50">
+                                                <td className="px-4 py-2">
+                                                  <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+                                                    {categoryLabel}
+                                                  </span>
+                                                </td>
+                                                <td className="px-4 py-2 text-slate-600">{zone}</td>
+                                                <td className="px-4 py-2 font-medium text-slate-900">{ex.exercise.name}</td>
+                                                <td className="px-4 py-2 text-right space-x-1">
+                                                  <button
+                                                    onClick={() => handleMoveExercise(patient.id, idx, 'up')}
+                                                    disabled={idx === 0}
+                                                    className="p-1 hover:bg-blue-100 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                    title="Mover arriba"
+                                                  >
+                                                    <ArrowUp className="w-4 h-4 text-blue-600" />
+                                                  </button>
+                                                  <button
+                                                    onClick={() => handleMoveExercise(patient.id, idx, 'down')}
+                                                    disabled={idx === patient.recommendations.exercises.length - 1}
+                                                    className="p-1 hover:bg-blue-100 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                    title="Mover abajo"
+                                                  >
+                                                    <ArrowDown className="w-4 h-4 text-blue-600" />
+                                                  </button>
+                                                  <button
+                                                    onClick={() => handleRemoveExerciseFromPatient(patient.id, ex.exerciseId)}
+                                                    className="p-1 hover:bg-red-100 rounded transition-colors"
+                                                    title="Eliminar ejercicio"
+                                                  >
+                                                    <Trash2 className="w-4 h-4 text-red-600" />
+                                                  </button>
+                                                </td>
+                                              </tr>
+                                            )
+                                          })}
+                                        </tbody>
+                                      </table>
                                     </div>
                                   </div>
                                 ) : (
