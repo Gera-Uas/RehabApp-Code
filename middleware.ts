@@ -24,33 +24,27 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // Redireccionar "/" según rol
+  // Redirigir "/" siempre al login
   if (pathname === "/") {
-    const roleMap: Record<string, string> = {
-      ADMIN: "/admin",
-      FISIOTERAPEUTA: "/fisio",
-      PACIENTE: "/patient",
-    };
-    const rolePath = roleMap[token.role as string] || "/";
-    return NextResponse.redirect(new URL(rolePath, request.url));
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // Rutas protegidas por rol
+  // Rutas protegidas por rol - redirige al login si no tiene permiso
   if (pathname.startsWith("/admin")) {
     if (token.role !== "ADMIN") {
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/login", request.url));
     }
   }
 
   if (pathname.startsWith("/fisio")) {
     if (token.role !== "FISIOTERAPEUTA") {
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/login", request.url));
     }
   }
 
   if (pathname.startsWith("/patient")) {
     if (token.role !== "PACIENTE") {
-      return NextResponse.redirect(new URL("/", request.url));
+      return NextResponse.redirect(new URL("/login", request.url));
     }
   }
 

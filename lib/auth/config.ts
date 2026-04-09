@@ -72,6 +72,27 @@ export const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    async redirect({ url, baseUrl, token }) {
+      // Si no hay token, redirige a login
+      if (!token) {
+        return `${baseUrl}/login`;
+      }
+
+      // Redirige según el rol
+      const roleMap: Record<string, string> = {
+        ADMIN: "/admin",
+        FISIOTERAPEUTA: "/fisio",
+        PACIENTE: "/patient",
+      };
+      const rolePath = roleMap[token.role as string] || "/login";
+
+      // Si la URL es "/", redirige a la ruta del rol
+      if (url === `${baseUrl}/` || url === baseUrl) {
+        return `${baseUrl}${rolePath}`;
+      }
+
+      return url;
+    },
   },
   session: {
     strategy: "jwt",

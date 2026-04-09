@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,13 @@ export default function LoginPage() {
     return roleMap[role || ""] || "/";
   };
 
+  // Si ya está autenticado, redirige a su ruta
+  useEffect(() => {
+    if (session?.user?.role) {
+      router.push(getRoleRoute(session.user.role));
+    }
+  }, [session, router]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -34,21 +41,16 @@ export default function LoginPage() {
       const result = await signIn("credentials", {
         email,
         password,
-        redirect: false,
+        redirect: true,
+        callbackUrl: getRoleRoute(session?.user?.role),
       });
 
       if (result?.error) {
         setError(result.error);
-      } else if (result?.ok) {
-        // Esperar a que la sesión se actualice
-        setTimeout(() => {
-          router.push(getRoleRoute(session?.user?.role));
-          router.refresh();
-        }, 500);
+        setLoading(false);
       }
     } catch (err) {
       setError("Error al iniciar sesión");
-    } finally {
       setLoading(false);
     }
   };
