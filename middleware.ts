@@ -9,14 +9,23 @@ export async function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  // "/" siempre va a /login (sin importar sesión)
+  // "/" siempre va a /login
   if (pathname === "/") {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // Rutas públicas que no requieren autenticación
+  // Rutas públicas - si ya está autenticado, redirige a su dashboard
   const publicRoutes = ["/login", "/auth/register"];
   if (publicRoutes.includes(pathname)) {
+    if (token) {
+      const roleMap: Record<string, string> = {
+        ADMIN: "/admin",
+        FISIOTERAPEUTA: "/fisio",
+        PACIENTE: "/patient",
+      };
+      const rolePath = roleMap[token.role as string] || "/login";
+      return NextResponse.redirect(new URL(rolePath, request.url));
+    }
     return NextResponse.next();
   }
 
@@ -60,5 +69,6 @@ export const config = {
     "/((?!api|_next/static|_next/image|favicon.ico|public).*)",
   ],
 };
+
 
 

@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,6 +13,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const redirectInProgressRef = useRef(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,13 +25,17 @@ export default function LoginPage() {
       const result = await signIn("credentials", {
         email,
         password,
-        redirect: true,
-        callbackUrl: "/",
+        redirect: false,
       });
 
       if (result?.error) {
         setError(result.error);
         setLoading(false);
+      } else if (result?.ok) {
+        // Marcar que estamos redirigiendo para evitar bucles
+        redirectInProgressRef.current = true;
+        // Hacer refresh para que el middleware pueda acceder al token actualizado
+        router.refresh();
       }
     } catch (err) {
       setError("Error al iniciar sesión");
