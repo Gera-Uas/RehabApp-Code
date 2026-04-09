@@ -75,6 +75,22 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: "jwt",
+    maxAge: 24 * 60 * 60, // 24 horas máximo
+  },
+  jwt: {
+    maxAge: 24 * 60 * 60, // 24 horas máximo
+  },
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        // Sin maxAge = cookie de sesión (se borra al cerrar navegador)
+      },
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
+
