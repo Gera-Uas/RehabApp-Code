@@ -3,7 +3,6 @@ import type { Metadata } from "next"
 import { Inter, Poppins } from "next/font/google"
 import "./globals.css"
 import { AuthSessionProvider } from "@/components/AuthSessionProvider"
-import { Navbar } from "@/components/Navbar"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,7 +35,6 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
       <body className="font-sans antialiased">
         <AuthSessionProvider>
-          <Navbar />
           {children}
         </AuthSessionProvider>
       </body>
