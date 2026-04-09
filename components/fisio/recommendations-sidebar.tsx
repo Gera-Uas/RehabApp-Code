@@ -28,15 +28,18 @@ interface RecommendationsSidebarProps {
   isOpen: boolean
   onClose: () => void
   selectedExercise?: Exercise | null
+  patients: Patient[]
+  setPatients: (patients: Patient[]) => void
 }
 
 export default function RecommendationsSidebar({
   isOpen,
   onClose,
   selectedExercise,
+  patients,
+  setPatients,
 }: RecommendationsSidebarProps) {
   const hasLoadedRef = useRef(false)
-  const [patients, setPatients] = useState<Patient[]>([])
   const [searchQuery, setSearchQuery] = useState("")
   const [searchResults, setSearchResults] = useState<Patient[]>([])
   const [isSearching, setIsSearching] = useState(false)
@@ -45,13 +48,13 @@ export default function RecommendationsSidebar({
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
 
-  // Cargar pacientes al abrir (solo en la primera apertura)
+  // Cargar pacientes al montar el componente (solo una vez)
   useEffect(() => {
-    if (isOpen && !hasLoadedRef.current) {
+    if (!hasLoadedRef.current) {
       hasLoadedRef.current = true
       fetchPatients()
     }
-  }, [isOpen])
+  }, [])
 
   // Buscar pacientes en tiempo real
   useEffect(() => {
@@ -103,12 +106,28 @@ export default function RecommendationsSidebar({
   }
 
   const handleAddPatient = async (patient: Patient) => {
-    // Agregar paciente a la lista local
-    if (!patients.find(p => p.id === patient.id)) {
-      setPatients([...patients, patient])
+    try {
+      // Asignar paciente en la BD
+      const response = await fetch('/api/fisio/patients/assign', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ patientId: patient.id })
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Error desconocido' }))
+        throw new Error(errorData.error || 'Error al asignar paciente')
+      }
+
+      // Agregar paciente a la lista local
+      if (!patients.find(p => p.id === patient.id)) {
+        setPatients([...patients, { ...patient, fisioId: null }])
+      }
+      setSearchQuery("")
+      setShowSearch(false)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al agregar paciente")
     }
-    setSearchQuery("")
-    setShowSearch(false)
   }
 
   const handleRemovePatient = async (patientId: string) => {
@@ -116,17 +135,15 @@ export default function RecommendationsSidebar({
     if (!confirmed) return
 
     try {
-      // Eliminar la recomendación asociada
-      const patient = patients.find(p => p.id === patientId)
-      if (patient?.recommendations?.id) {
-        const response = await fetch(
-          `/api/fisio/recommendations/${patient.recommendations.id}`,
-          { method: "DELETE" }
-        )
+      // Eliminar del servidor
+      const response = await fetch(
+        `/api/fisio/patients/${patientId}`,
+        { method: "DELETE" }
+      )
 
-        if (!response.ok) {
-          throw new Error("Error al eliminar recomendación")
-        }
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Error desconocido' }))
+        throw new Error(errorData.error || "Error al eliminar paciente")
       }
 
       // Remover de la lista local

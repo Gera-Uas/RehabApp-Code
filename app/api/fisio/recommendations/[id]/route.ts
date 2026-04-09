@@ -9,7 +9,7 @@ import { prisma } from '@/lib/prisma'
  */
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await getServerSession(authOptions)
@@ -21,7 +21,7 @@ export async function DELETE(
       )
     }
 
-    const { id } = params
+    const { id } = await params
 
     // Validar que la recomendación pertenece a un paciente del fisioterapeuta
     const recommendation = await prisma.exerciseRecommendation.findUnique({
@@ -48,8 +48,14 @@ export async function DELETE(
       where: { id }
     })
 
+    // Desasignar el paciente del fisioterapeuta
+    await prisma.user.update({
+      where: { id: recommendation.patientId },
+      data: { fisioId: null }
+    })
+
     return NextResponse.json({
-      message: 'Recomendación eliminada exitosamente'
+      message: 'Paciente eliminado del catálogo'
     })
   } catch (error) {
     console.error('Error deleting recommendation:', error)

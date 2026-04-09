@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useSession } from "next-auth/react"
 import type { Category, Exercise } from "@/src/types"
 import CategoryTabs from "@features/exercises/components/category-tabs"
@@ -9,6 +9,23 @@ import ExerciseModal from "@features/exercises/components/exercise-modal"
 import FloatingActionButton from "@/components/fisio/floating-action-button"
 import RecommendationsSidebar from "@/components/fisio/recommendations-sidebar"
 import { Activity } from "lucide-react"
+
+interface Patient {
+  id: string
+  name: string
+  email: string
+  fisioId: string | null
+  recommendations?: {
+    id: string
+    exercises: Array<{
+      exerciseId: string
+      exercise: {
+        id: string
+        name: string
+      }
+    }>
+  } | null
+}
 
 export default function PhysiotherapyPlatform() {
   const { data: session } = useSession()
@@ -19,6 +36,7 @@ export default function PhysiotherapyPlatform() {
   const [selectedZone, setSelectedZone] = useState<string | null>(null)
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null)
   const [showRecommendationsSidebar, setShowRecommendationsSidebar] = useState(false)
+  const [patients, setPatients] = useState<Patient[]>([])
 
   const handleCloseModal = () => {
     setSelectedZone(null)
@@ -80,6 +98,8 @@ export default function PhysiotherapyPlatform() {
         isOpen={showRecommendationsSidebar}
         onClose={() => setShowRecommendationsSidebar(false)}
         selectedExercise={selectedExercise}
+        patients={patients}
+        setPatients={setPatients}
       />
     </div>
   )

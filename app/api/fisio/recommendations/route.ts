@@ -93,16 +93,24 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const validated = recommendationSchema.parse(body)
 
-    // Validar que el paciente pertenece al fisioterapeuta
+    // Validar que el paciente existe
     const patient = await prisma.user.findUnique({
       where: { id: validated.patientId }
     })
 
-    if (!patient || patient.fisioId !== session.user.id || patient.role !== 'PACIENTE') {
+    if (!patient || patient.role !== 'PACIENTE') {
       return NextResponse.json(
-        { error: 'Paciente no encontrado o no asignado' },
+        { error: 'Paciente no encontrado' },
         { status: 404 }
       )
+    }
+
+    // Si el paciente no está asignado, asignarlo al fisioterapeuta actual
+    if (!patient.fisioId) {
+      await prisma.user.update({
+        where: { id: validated.patientId },
+        data: { fisioId: session.user.id }
+      })
     }
 
     // Crear o actualizar recomendación (upsert)
