@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,24 +12,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
-  const { data: session } = useSession();
-
-  const getRoleRoute = (role?: string) => {
-    const roleMap: Record<string, string> = {
-      ADMIN: "/admin",
-      FISIOTERAPEUTA: "/fisio",
-      PACIENTE: "/patient",
-    };
-    return roleMap[role || ""] || "/";
-  };
-
-  // Si ya está autenticado, redirige a su ruta
-  useEffect(() => {
-    if (session?.user?.role) {
-      router.push(getRoleRoute(session.user.role));
-    }
-  }, [session, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +23,7 @@ export default function LoginPage() {
         email,
         password,
         redirect: true,
-        callbackUrl: getRoleRoute(session?.user?.role),
+        callbackUrl: "/",
       });
 
       if (result?.error) {
