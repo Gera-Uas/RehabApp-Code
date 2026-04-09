@@ -43,13 +43,21 @@ export async function GET(request: NextRequest) {
             exercises: {
               select: {
                 exerciseId: true,
+                order: true,
                 exercise: {
                   select: {
                     id: true,
-                    name: true
+                    name: true,
+                    group: {
+                      select: {
+                        groupId: true,
+                        category: true
+                      }
+                    }
                   }
                 }
-              }
+              },
+              orderBy: { order: 'asc' }
             }
           }
         }
