@@ -163,11 +163,10 @@ export default function ExerciseModal({
     }
   }, [isOpen])
 
-  useEffect(() => {
-    if (selectedExercise) {
-      setShowPlayer(true)
-    }
-  }, [selectedExercise])
+  const handleViewExercise = (exercise: Exercise) => {
+    onExerciseSelect(exercise)
+    setShowPlayer(true)
+  }
 
   // Close modal on escape key
   useEffect(() => {
@@ -403,10 +402,18 @@ export default function ExerciseModal({
                           .map((exercise) => {
                           const ranking = rankedExercises.get(exercise.id)
                           return (
-                            <motion.button
+                            <motion.div
                               key={exercise.id}
-                              onClick={() => onExerciseSelect(exercise)}
+                              onClick={() => {
+                                onExerciseSelect(exercise)
+                                // Non-admin users see detail on click
+                                if (!isAdmin) {
+                                  setShowPlayer(true)
+                                }
+                              }}
                               className={`flex items-center justify-between p-5 rounded-2xl border-2 transition-all text-left ${
+                                isAdmin ? "cursor-pointer" : "cursor-pointer"
+                              } ${
                                 selectedExercise?.id === exercise.id
                                   ? "border-cyan-500 bg-cyan-50 shadow-md"
                                   : "border-slate-200 bg-white hover:border-cyan-300 hover:shadow-sm"
@@ -432,12 +439,25 @@ export default function ExerciseModal({
                                   </div>
                                 )}
                               </div>
-                              <ChevronRight
-                                className={`w-5 h-5 transition-colors flex-shrink-0 ${
-                                  selectedExercise?.id === exercise.id ? "text-cyan-600" : "text-slate-400"
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  handleViewExercise(exercise)
+                                }}
+                                className={`p-1 rounded transition-colors flex-shrink-0 ${
+                                  isAdmin
+                                    ? "hover:bg-cyan-200 cursor-pointer"
+                                    : "opacity-0 pointer-events-none"
                                 }`}
-                              />
-                            </motion.button>
+                                title={isAdmin ? "Ver detalle del ejercicio" : ""}
+                              >
+                                <ChevronRight
+                                  className={`w-5 h-5 transition-colors ${
+                                    selectedExercise?.id === exercise.id ? "text-cyan-600" : "text-slate-400"
+                                  }`}
+                                />
+                              </button>
+                            </motion.div>
                           )
                         })}
                       </div>

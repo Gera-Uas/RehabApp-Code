@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Loader2 } from "lucide-react"
 import type { Category, Exercise } from "@/src/types"
@@ -44,6 +44,41 @@ export default function ExerciseFormDialog({
     frequency: exercise?.metrics?.frequency || 3,
     targetMuscles: exercise?.targetMuscles?.join(", ") || "",
   })
+
+  // Actualizar formData cuando exercise cambia
+  useEffect(() => {
+    if (isEditing && exercise) {
+      // Modo edición: cargar datos del ejercicio
+      setFormData({
+        name: exercise.name || "",
+        videoUrl: exercise.videoUrl || "",
+        level: (exercise.level as string) || "principiante",
+        movementType: (exercise.movementType as string) || "controlado",
+        position: (exercise.position as string) || "de_pie",
+        equipment: (exercise.equipment as string) || "sin_equipo",
+        difficulty: exercise.metrics?.difficulty || 5,
+        duration: exercise.metrics?.duration || 10,
+        effectiveness: exercise.metrics?.effectiveness || 3,
+        frequency: exercise.metrics?.frequency || 3,
+        targetMuscles: exercise.targetMuscles?.join(", ") || "",
+      })
+    } else if (!isEditing && isOpen) {
+      // Modo creación: vaciar formulario
+      setFormData({
+        name: "",
+        videoUrl: "",
+        level: "principiante",
+        movementType: "controlado",
+        position: "de_pie",
+        equipment: "sin_equipo",
+        difficulty: 5,
+        duration: 10,
+        effectiveness: 3,
+        frequency: 3,
+        targetMuscles: "",
+      })
+    }
+  }, [exercise, isEditing, isOpen])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
