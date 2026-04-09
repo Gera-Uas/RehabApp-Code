@@ -8,6 +8,8 @@ import BodyModel from "@features/body-map/components/body-model"
 import ExerciseModal from "@features/exercises/components/exercise-modal"
 import FloatingActionButton from "@/components/fisio/floating-action-button"
 import RecommendationsSidebar from "@/components/fisio/recommendations-sidebar"
+import PatientFloatingActionButton from "@/components/patient/patient-floating-action-button"
+import PatientRecommendationsSidebar from "@/components/patient/patient-recommendations-sidebar"
 import { Activity } from "lucide-react"
 
 interface Patient {
@@ -31,11 +33,13 @@ export default function PhysiotherapyPlatform() {
   const { data: session } = useSession()
   const isAdmin = session?.user?.role === "ADMIN"
   const isFisio = session?.user?.role === "FISIOTERAPEUTA"
+  const isPatient = session?.user?.role === "PACIENTE"
 
   const [selectedCategory, setSelectedCategory] = useState<Category>(null)
   const [selectedZone, setSelectedZone] = useState<string | null>(null)
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null)
   const [showRecommendationsSidebar, setShowRecommendationsSidebar] = useState(false)
+  const [showPatientSidebar, setShowPatientSidebar] = useState(false)
   const [patients, setPatients] = useState<Patient[]>([])
 
   const handleCloseModal = () => {
@@ -93,7 +97,13 @@ export default function PhysiotherapyPlatform() {
         onClick={() => setShowRecommendationsSidebar(true)}
       />
 
-      {/* Recommendations Sidebar */}
+      {/* Floating Action Button (solo para Pacientes) */}
+      <PatientFloatingActionButton
+        isVisible={isPatient}
+        onClick={() => setShowPatientSidebar(true)}
+      />
+
+      {/* Recommendations Sidebar (Fisioterapeutas) */}
       <RecommendationsSidebar
         isOpen={showRecommendationsSidebar}
         onClose={() => setShowRecommendationsSidebar(false)}
@@ -101,6 +111,14 @@ export default function PhysiotherapyPlatform() {
         patients={patients}
         setPatients={setPatients}
       />
+
+      {/* Patient Recommendations Sidebar (Pacientes) */}
+      <PatientRecommendationsSidebar
+        isOpen={showPatientSidebar}
+        onClose={() => setShowPatientSidebar(false)}
+        onSelectExercise={handleExerciseSelect}
+      />
     </div>
   )
 }
+
