@@ -346,17 +346,17 @@ export default function RecommendationsSidebar({
 
           {/* Sidebar */}
           <motion.div
-            initial={{ opacity: 0, x: 400 }}
+            initial={{ opacity: 0, x: 600 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 400 }}
+            exit={{ opacity: 0, x: 600 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed right-0 top-0 bottom-0 w-full sm:w-96 bg-white shadow-2xl z-50 flex flex-col overflow-hidden"
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-[700px] bg-white shadow-2xl z-50 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-200 bg-gradient-to-r from-blue-50 to-cyan-50">
+            <div className="flex items-center justify-between p-8 border-b border-slate-200 bg-gradient-to-r from-blue-50 to-cyan-50">
               <div>
-                <h2 className="text-2xl font-bold text-slate-900">📋 Catálogo</h2>
-                <p className="text-sm text-slate-600 mt-1">Mis Pacientes</p>
+                <h2 className="text-3xl font-bold text-slate-900">📋 Catálogo</h2>
+                <p className="text-base text-slate-600 mt-1">Mis Pacientes y Ejercicios</p>
               </div>
               <button
                 onClick={onClose}
@@ -368,7 +368,7 @@ export default function RecommendationsSidebar({
 
             {/* Content */}
             <ScrollArea className="flex-1">
-              <div className="p-6 space-y-4">
+              <div className="p-8 space-y-5">
                 {error && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -382,9 +382,9 @@ export default function RecommendationsSidebar({
                 {/* Botón Agregar Paciente */}
                 <Button
                   onClick={() => setShowSearch(!showSearch)}
-                  className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                  className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-base py-6"
                 >
-                  <Plus className="w-4 h-4 mr-2" />
+                  <Plus className="w-5 h-5 mr-2" />
                   Agregar Paciente
                 </Button>
 
@@ -398,13 +398,13 @@ export default function RecommendationsSidebar({
                       className="space-y-3 overflow-hidden"
                     >
                       <div className="relative">
-                        <Search className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                        <Search className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
                         <input
                           type="text"
                           placeholder="Buscar paciente..."
                           value={searchQuery}
                           onChange={(e) => setSearchQuery(e.target.value)}
-                          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                          className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-base"
                           autoFocus
                         />
                       </div>
@@ -415,7 +415,7 @@ export default function RecommendationsSidebar({
                           <Loader2 className="w-5 h-5 animate-spin mx-auto text-slate-400" />
                         </div>
                       ) : searchResults.length > 0 ? (
-                        <div className="space-y-2 max-h-48 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-slate-50">
+                        <div className="space-y-2 max-h-64 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-slate-50">
                           {searchResults.map(patient => (
                             <motion.button
                               key={patient.id}
@@ -447,11 +447,11 @@ export default function RecommendationsSidebar({
                     <p className="text-sm text-slate-400 mt-2">Agrega pacientes para comenzar</p>
                   </div>
                 ) : (
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {patients.map(patient => (
                       <motion.div
                         key={patient.id}
-                        className="border border-slate-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow"
+                        className="border border-slate-200 rounded-xl overflow-hidden bg-white hover:shadow-lg transition-shadow"
                         layout
                       >
                         {/* Patient Header */}
@@ -459,13 +459,13 @@ export default function RecommendationsSidebar({
                           onClick={() => setExpandedPatient(
                             expandedPatient === patient.id ? null : patient.id
                           )}
-                          className="w-full p-4 flex items-start justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                          className="w-full p-5 flex items-start justify-between hover:bg-slate-50 transition-colors cursor-pointer"
                         >
                           <div className="text-left flex-1">
-                            <div className="font-semibold text-slate-900">{patient.name}</div>
-                            <div className="text-sm text-slate-500">{patient.email}</div>
+                            <div className="font-semibold text-lg text-slate-900">{patient.name}</div>
+                            <div className="text-base text-slate-500">{patient.email}</div>
                             {patient.recommendations?.exercises && patient.recommendations.exercises.length > 0 && (
-                              <div className="text-xs text-blue-600 mt-1">
+                              <div className="text-sm text-blue-600 mt-2 font-medium">
                                 {patient.recommendations.exercises.length} ejercicio(s)
                               </div>
                             )}
@@ -475,16 +475,16 @@ export default function RecommendationsSidebar({
                               animate={{ rotate: expandedPatient === patient.id ? 180 : 0 }}
                               transition={{ duration: 0.2 }}
                             >
-                              <ChevronDown className="w-5 h-5 text-slate-400" />
+                              <ChevronDown className="w-6 h-6 text-slate-400" />
                             </motion.div>
                             <button
                               onClick={(e) => {
                                 e.stopPropagation()
                                 handleRemovePatient(patient.id)
                               }}
-                              className="p-1.5 hover:bg-red-100 rounded-lg transition-colors"
+                              className="p-2 hover:bg-red-100 rounded-lg transition-colors"
                             >
-                              <Trash2 className="w-4 h-4 text-red-600" />
+                              <Trash2 className="w-5 h-5 text-red-600" />
                             </button>
                           </div>
                         </div>
@@ -498,11 +498,11 @@ export default function RecommendationsSidebar({
                               exit={{ opacity: 0, height: 0 }}
                               className="border-t border-slate-200 bg-slate-50"
                             >
-                              <div className="p-4 space-y-4">
+                              <div className="p-5 space-y-5">
                                 {/* Ejercicios Recomendados */}
                                 {patient.recommendations?.exercises && patient.recommendations.exercises.length > 0 ? (
                                   <div>
-                                    <h4 className="font-semibold text-sm text-slate-900 mb-3">
+                                    <h4 className="font-semibold text-base text-slate-900 mb-4">
                                       Ejercicios Recomendados:
                                     </h4>
                                     {/* Tabla */}
@@ -510,9 +510,10 @@ export default function RecommendationsSidebar({
                                       <table className="w-full text-sm">
                                         <thead className="bg-slate-100 border-b border-slate-200">
                                           <tr>
-                                            <th className="text-left px-4 py-2 font-semibold text-slate-700">Categoría</th>
-                                            <th className="text-left px-4 py-2 font-semibold text-slate-700">Zona Muscular</th>
-                                            <th className="text-left px-4 py-2 font-semibold text-slate-700">Ejercicio</th>
+                                            <th className="text-left px-4 py-3 font-semibold text-slate-700">Categoría</th>
+                                            <th className="text-left px-4 py-3 font-semibold text-slate-700">Zona</th>
+                                            <th className="text-left px-4 py-3 font-semibold text-slate-700">Ejercicio</th>
+                                            <th className="text-center px-4 py-3 font-semibold text-slate-700">Acciones</th>
                                           </tr>
                                         </thead>
                                         <tbody>
@@ -525,19 +526,19 @@ export default function RecommendationsSidebar({
                                               : category
 
                                             return (
-                                              <tr key={`${ex.exerciseId}-${idx}`} className="border-b border-slate-200 hover:bg-slate-50">
-                                                <td className="px-4 py-2">
-                                                  <span className="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+                                              <tr key={`${ex.exerciseId}-${idx}`} className="border-b border-slate-200 hover:bg-slate-100">
+                                                <td className="px-4 py-3">
+                                                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
                                                     {categoryLabel}
                                                   </span>
                                                 </td>
-                                                <td className="px-4 py-2 text-slate-600">{zone}</td>
-                                                <td className="px-4 py-2 font-medium text-slate-900">{ex.exercise.name}</td>
-                                                <td className="px-4 py-2 text-right space-x-1">
+                                                <td className="px-4 py-3 text-slate-600 font-medium">{zone}</td>
+                                                <td className="px-4 py-3 font-semibold text-slate-900">{ex.exercise.name}</td>
+                                                <td className="px-4 py-3 text-right space-x-2">
                                                   <button
                                                     onClick={() => handleMoveExercise(patient.id, idx, 'up')}
                                                     disabled={idx === 0}
-                                                    className="p-1 hover:bg-blue-100 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                    className="p-2 hover:bg-blue-100 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed inline-block"
                                                     title="Mover arriba"
                                                   >
                                                     <ArrowUp className="w-4 h-4 text-blue-600" />
@@ -545,14 +546,14 @@ export default function RecommendationsSidebar({
                                                   <button
                                                     onClick={() => handleMoveExercise(patient.id, idx, 'down')}
                                                     disabled={idx === patient.recommendations.exercises.length - 1}
-                                                    className="p-1 hover:bg-blue-100 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                    className="p-2 hover:bg-blue-100 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed inline-block"
                                                     title="Mover abajo"
                                                   >
                                                     <ArrowDown className="w-4 h-4 text-blue-600" />
                                                   </button>
                                                   <button
                                                     onClick={() => handleRemoveExerciseFromPatient(patient.id, ex.exerciseId)}
-                                                    className="p-1 hover:bg-red-100 rounded transition-colors"
+                                                    className="p-2 hover:bg-red-100 rounded transition-colors inline-block"
                                                     title="Eliminar ejercicio"
                                                   >
                                                     <Trash2 className="w-4 h-4 text-red-600" />
@@ -566,18 +567,18 @@ export default function RecommendationsSidebar({
                                     </div>
                                   </div>
                                 ) : (
-                                  <p className="text-sm text-slate-500">Sin ejercicios recomendados</p>
+                                  <p className="text-base text-slate-500">Sin ejercicios recomendados</p>
                                 )}
 
                                 {/* Botón Agregar Ejercicio */}
                                 {selectedExercise && (
                                   <motion.button
                                     onClick={() => handleAddExerciseToPatient(patient.id)}
-                                    className="w-full py-2 px-3 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
+                                    className="w-full py-3 px-4 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-semibold rounded-lg transition-all flex items-center justify-center gap-2 text-base"
                                     whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.98 }}
                                   >
-                                    <Heart className="w-4 h-4 fill-current" />
+                                    <Heart className="w-5 h-5 fill-current" />
                                     Agregar Ejercicio Actual
                                   </motion.button>
                                 )}
