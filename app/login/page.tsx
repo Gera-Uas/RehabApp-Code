@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,7 +15,20 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const redirectInProgressRef = useRef(false);
+  const { data: session, status } = useSession();
+
+  // Si la sesión se carga exitosamente, redirigir al dashboard
+  useEffect(() => {
+    if (status === "authenticated" && session?.user?.role) {
+      const roleMap: Record<string, string> = {
+        ADMIN: "/admin",
+        FISIOTERAPEUTA: "/fisio",
+        PACIENTE: "/patient",
+      };
+      const rolePath = roleMap[session.user.role] || "/login";
+      router.push(rolePath);
+    }
+  }, [status, session, router]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,12 +45,8 @@ export default function LoginPage() {
       if (result?.error) {
         setError(result.error);
         setLoading(false);
-      } else if (result?.ok) {
-        // Marcar que estamos redirigiendo para evitar bucles
-        redirectInProgressRef.current = true;
-        // Hacer refresh para que el middleware pueda acceder al token actualizado
-        router.refresh();
       }
+      // Si es exitoso, useEffect detectará la sesión y redirigirá
     } catch (err) {
       setError("Error al iniciar sesión");
       setLoading(false);
@@ -113,3 +123,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

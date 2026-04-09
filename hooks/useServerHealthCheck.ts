@@ -38,17 +38,18 @@ export function useServerHealthCheck() {
         consecutiveFailuresRef.current++;
       }
 
-      // Si hay 3 fallos consecutivos, hacer logout
-      if (consecutiveFailuresRef.current >= 3) {
+      // Si hay 2 fallos consecutivos, hacer logout
+      if (consecutiveFailuresRef.current >= 2) {
         await signOut({ redirect: true, callbackUrl: "/login" });
       }
     };
 
-    // Verificar cada 10 segundos
-    intervalRef.current = setInterval(checkServerHealth, 10000);
+    // Verificar cada 30 segundos
+    intervalRef.current = setInterval(checkServerHealth, 30000);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [session?.user]);
 }
+
