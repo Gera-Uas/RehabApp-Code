@@ -13,7 +13,7 @@ import { prisma } from '@/lib/prisma'
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
-    
+
     const page = Math.max(1, parseInt(searchParams.get('page') || '1'))
     const limit = Math.min(100, parseInt(searchParams.get('limit') || '20'))
     const category = searchParams.get('category')
@@ -83,6 +83,71 @@ export async function GET(request: NextRequest) {
     console.error('Error fetching exercises:', error)
     return NextResponse.json(
       { error: 'Failed to fetch exercises' },
+      { status: 500 }
+    )
+  }
+}
+
+/**
+ * POST /api/exercises
+ * Crea un nuevo ejercicio
+ */
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const { name, videoUrl, level, movementType, position, equipment, metrics, targetMuscles, groupId, category } = body
+
+    // Validar campos requeridos
+    if (!name || !groupId || !category) {
+      return NextResponse.json(
+        { error: 'Missing required fields: name, groupId, category' },
+        { status: 400 }
+      )
+    }
+
+    // Obtener o crear el grupo de ejercicio
+    let group = await prisma.exerciseGroup.findUnique({
+      where: {
+        groupId_category: {
+          groupId: groupId,
+          category: category
+        }
+      }
+    })
+
+    if (!group) {
+      group = await prisma.exerciseGroup.create({
+        data: {
+          groupId: groupId,
+          category: category
+        }
+      })
+    }
+
+    // Crear ejercicio
+    const exercise = await prisma.exercise.create({
+      data: {
+        id: `${groupId}-${Date.now()}`,
+        name,
+        videoUrl: videoUrl || '',
+        level: level || 'principiante',
+        movementType: movementType || 'controlado',
+        position: position || 'de_pie',
+        equipment: equipment || 'sin_equipo',
+        metrics: metrics || {},
+        targetMuscles: targetMuscles || [],
+        groupId: group.id
+      },
+      include: {
+        group: true
+      }
+    })
+
+    return NextResponse.json({ data: exercise })
+  } catch (error) {
+    console.error('Error creating exercise:', error)
+    return NextResponse.json(
+      { error: 'Failed to create exercise' },
       { status: 500 }
     )
   }

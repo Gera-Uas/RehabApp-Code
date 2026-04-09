@@ -2,10 +2,11 @@
 
 import { useEffect, useState, useCallback, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, ChevronRight, ChevronLeft, Settings } from "lucide-react"
+import { X, ChevronRight, ChevronLeft, Settings, Plus, Edit2, Trash2 } from "lucide-react"
 import type { Category, Exercise, ExerciseData } from "@/src/types"
 import BODY_ZONES from "@/src/data/bodyZones"
 import ExercisePlayer from "@features/exercises/components/exercise-player"
+import ExerciseFormDialog from "@features/exercises/components/exercise-form-dialog"
 import { SAWCalculator } from "@/lib/mcdm/saw"
 import type { Criterion, Alternative } from "@/lib/mcdm/types"
 import { useScoringStore } from "@features/exercises/store/scoring"
@@ -18,6 +19,7 @@ interface ExerciseModalProps {
   category: Category
   selectedExercise: Exercise | null
   onExerciseSelect: (exercise: Exercise) => void
+  isAdmin?: boolean
 }
 
 export default function ExerciseModal({
@@ -27,12 +29,15 @@ export default function ExerciseModal({
   category,
   selectedExercise,
   onExerciseSelect,
+  isAdmin = false,
 }: ExerciseModalProps) {
   const [exercises, setExercises] = useState<Exercise[]>([])
   const [zoneName, setZoneName] = useState<string>("")
   const [zoneData, setZoneData] = useState<ExerciseData | null>(null)
   const [showPlayer, setShowPlayer] = useState(false)
   const [showPreferences, setShowPreferences] = useState(false)
+  const [showFormDialog, setShowFormDialog] = useState(false)
+  const [formMode, setFormMode] = useState<"create" | "edit">("create")
   const [rankedExercises, setRankedExercises] = useState<Map<string, number>>(new Map())
   const { getNormalizedWeights, weights } = useScoringStore()
   const contentRef = useRef<HTMLDivElement>(null)
@@ -191,18 +196,99 @@ export default function ExerciseModal({
     }
   }
 
+  const handleDeleteExercise = async () => {
+    if (!selectedExercise) return
+
+    const confirmed = confirm(`¿Eliminar el ejercicio "${selectedExercise.name}"?`)
+    if (!confirmed) return
+
+    try {
+      const response = await fetch(`/api/exercises/${selectedExercise.id}`, {
+        method: 'DELETE'
+      })
+
+      if (!response.ok) {
+        throw new Error('Error al eliminar el ejercicio')
+      }
+
+      // Recargar ejercicios
+      setExercises(exercises.filter(e => e.id !== selectedExercise.id))
+      onExerciseSelect(null as any)
+    } catch (error) {
+      console.error('Error deleting exercise:', error)
+      alert('Error al eliminar el ejercicio')
+    }
+  }
+
+  const refreshExercises = async () => {
+    if (selectedZone && category) {
+      const zoneConfig = BODY_ZONES[selectedZone]
+      const groupId = zoneConfig?.group || selectedZone
+
+      try {
+        const query = new URLSearchParams({
+          groupId: groupId,
+          category: category,
+        }).toString()
+
+        const response = await fetch(`/api/exercises?${query}`, {
+          method: 'GET',
+          headers: { 'Content-Type': 'application/json' },
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch exercises')
+        }
+
+        const result = await response.json()
+        const data = result.data || []
+
+        setExercises(data)
+        setZoneData({
+          groupId: groupId,
+          category: category,
+          exercises: data
+        })
+
+        if (data.length > 0) {
+          calculateRanking(data)
+        }
+      } catch (error) {
+        console.error('Error fetching exercises:', error)
+      }
+    }
+  }
+
+  const handleCreateExercise = () => {
+    setFormMode("create")
+    setShowFormDialog(true)
+  }
+
+  const handleEditExercise = () => {
+    if (selectedExercise) {
+      setFormMode("edit")
+      setShowFormDialog(true)
+    }
+  }
+
+  const handleFormSuccess = () => {
+    refreshExercises()
+    setShowFormDialog(false)
+  }
+
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-          />
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            />
 
           {/* Modal */}
           <motion.div
@@ -230,6 +316,39 @@ export default function ExerciseModal({
                   <p className="text-sm text-slate-600 mt-1 capitalize">{category}</p>
                 </div>
               </div>
+
+              {/* Admin Menu */}
+              {isAdmin && !showPlayer && (
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={handleCreateExercise}
+                    className="p-2 hover:bg-blue-200 rounded-xl transition-colors flex items-center gap-2 bg-blue-100"
+                    aria-label="Crear ejercicio"
+                    title="Crear nuevo ejercicio"
+                  >
+                    <Plus className="w-5 h-5 text-blue-600" />
+                  </button>
+                  <button
+                    onClick={handleEditExercise}
+                    disabled={!selectedExercise}
+                    className="p-2 hover:bg-green-200 rounded-xl transition-colors flex items-center gap-2 bg-green-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                    aria-label="Editar ejercicio"
+                    title="Editar ejercicio seleccionado"
+                  >
+                    <Edit2 className="w-5 h-5 text-green-600" />
+                  </button>
+                  <button
+                    onClick={handleDeleteExercise}
+                    disabled={!selectedExercise}
+                    className="p-2 hover:bg-red-200 rounded-xl transition-colors flex items-center gap-2 bg-red-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                    aria-label="Eliminar ejercicio"
+                    title="Eliminar ejercicio seleccionado"
+                  >
+                    <Trash2 className="w-5 h-5 text-red-600" />
+                  </button>
+                </div>
+              )}
+
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setShowPreferences(!showPreferences)}
@@ -347,5 +466,17 @@ export default function ExerciseModal({
         </>
       )}
     </AnimatePresence>
+
+    {/* Exercise Form Dialog */}
+    <ExerciseFormDialog
+      isOpen={showFormDialog}
+      onClose={() => setShowFormDialog(false)}
+      selectedZone={selectedZone}
+      zoneName={zoneName}
+      category={category}
+      exercise={formMode === "edit" ? selectedExercise : undefined}
+      onSuccess={handleFormSuccess}
+    />
+    </>
   )
 }

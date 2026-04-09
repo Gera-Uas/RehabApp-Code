@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useSession } from "next-auth/react"
 import type { Category, Exercise } from "@/src/types"
 import CategoryTabs from "@features/exercises/components/category-tabs"
 import BodyModel from "@features/body-map/components/body-model"
@@ -8,6 +9,9 @@ import ExerciseModal from "@features/exercises/components/exercise-modal"
 import { Activity } from "lucide-react"
 
 export default function PhysiotherapyPlatform() {
+  const { data: session } = useSession()
+  const isAdmin = session?.user?.role === "ADMIN"
+
   const [selectedCategory, setSelectedCategory] = useState<Category>(null)
   const [selectedZone, setSelectedZone] = useState<string | null>(null)
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null)
@@ -57,6 +61,7 @@ export default function PhysiotherapyPlatform() {
         category={selectedCategory}
         selectedExercise={selectedExercise}
         onExerciseSelect={handleExerciseSelect}
+        isAdmin={isAdmin}
       />
     </div>
   )
