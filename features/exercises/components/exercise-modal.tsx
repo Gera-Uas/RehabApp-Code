@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, useCallback, useRef } from "react"
+import { useSession } from "next-auth/react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, ChevronRight, ChevronLeft, Settings, Plus, Edit2, Trash2 } from "lucide-react"
 import type { Category, Exercise, ExerciseData } from "@/src/types"
@@ -20,6 +21,7 @@ interface ExerciseModalProps {
   selectedExercise: Exercise | null
   onExerciseSelect: (exercise: Exercise) => void
   isAdmin?: boolean
+  onOpenRecommendations?: () => void
 }
 
 export default function ExerciseModal({
@@ -30,7 +32,11 @@ export default function ExerciseModal({
   selectedExercise,
   onExerciseSelect,
   isAdmin = false,
+  onOpenRecommendations,
 }: ExerciseModalProps) {
+  const { data: session } = useSession()
+  const isFisio = session?.user?.role === "FISIOTERAPEUTA"
+
   const [exercises, setExercises] = useState<Exercise[]>([])
   const [zoneName, setZoneName] = useState<string>("")
   const [zoneData, setZoneData] = useState<ExerciseData | null>(null)
@@ -471,11 +477,12 @@ export default function ExerciseModal({
                     exit={{ opacity: 0, x: 20 }}
                   >
                     {selectedExercise && zoneData && (
-                      <ExercisePlayer 
-                        exercise={selectedExercise} 
+                      <ExercisePlayer
+                        exercise={selectedExercise}
                         exerciseData={zoneData}
                         onExerciseSelect={onExerciseSelect}
                         onScrollToTop={handleScrollToTop}
+                        onRecommend={isFisio ? onOpenRecommendations : undefined}
                       />
                     )}
                   </motion.div>

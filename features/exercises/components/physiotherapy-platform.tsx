@@ -6,15 +6,19 @@ import type { Category, Exercise } from "@/src/types"
 import CategoryTabs from "@features/exercises/components/category-tabs"
 import BodyModel from "@features/body-map/components/body-model"
 import ExerciseModal from "@features/exercises/components/exercise-modal"
+import FloatingActionButton from "@/components/fisio/floating-action-button"
+import RecommendationsSidebar from "@/components/fisio/recommendations-sidebar"
 import { Activity } from "lucide-react"
 
 export default function PhysiotherapyPlatform() {
   const { data: session } = useSession()
   const isAdmin = session?.user?.role === "ADMIN"
+  const isFisio = session?.user?.role === "FISIOTERAPEUTA"
 
   const [selectedCategory, setSelectedCategory] = useState<Category>(null)
   const [selectedZone, setSelectedZone] = useState<string | null>(null)
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null)
+  const [showRecommendationsSidebar, setShowRecommendationsSidebar] = useState(false)
 
   const handleCloseModal = () => {
     setSelectedZone(null)
@@ -62,6 +66,20 @@ export default function PhysiotherapyPlatform() {
         selectedExercise={selectedExercise}
         onExerciseSelect={handleExerciseSelect}
         isAdmin={isAdmin}
+        onOpenRecommendations={isFisio ? () => setShowRecommendationsSidebar(true) : undefined}
+      />
+
+      {/* Floating Action Button (solo para Fisioterapeutas) */}
+      <FloatingActionButton
+        isVisible={isFisio}
+        onClick={() => setShowRecommendationsSidebar(true)}
+      />
+
+      {/* Recommendations Sidebar */}
+      <RecommendationsSidebar
+        isOpen={showRecommendationsSidebar}
+        onClose={() => setShowRecommendationsSidebar(false)}
+        selectedExercise={selectedExercise}
       />
     </div>
   )

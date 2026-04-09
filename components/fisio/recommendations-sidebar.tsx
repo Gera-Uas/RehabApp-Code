@@ -1,0 +1,410 @@
+"use client"
+
+import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { X, Search, Plus, Trash2, ChevronDown, Heart, Loader2 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import type { Exercise } from "@/src/types"
+
+interface Patient {
+  id: string
+  name: string
+  email: string
+  fisioId: string | null
+  recommendations?: {
+    id: string
+    exercises: Array<{
+      exerciseId: string
+      exercise: {
+        id: string
+        name: string
+      }
+    }>
+  } | null
+}
+
+interface RecommendationsSidebarProps {
+  isOpen: boolean
+  onClose: () => void
+  selectedExercise?: Exercise | null
+}
+
+export default function RecommendationsSidebar({
+  isOpen,
+  onClose,
+  selectedExercise,
+}: RecommendationsSidebarProps) {
+  const hasLoadedRef = useRef(false)
+  const [patients, setPatients] = useState<Patient[]>([])
+  const [searchQuery, setSearchQuery] = useState("")
+  const [searchResults, setSearchResults] = useState<Patient[]>([])
+  const [isSearching, setIsSearching] = useState(false)
+  const [showSearch, setShowSearch] = useState(false)
+  const [expandedPatient, setExpandedPatient] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
+
+  // Cargar pacientes al abrir (solo en la primera apertura)
+  useEffect(() => {
+    if (isOpen && !hasLoadedRef.current) {
+      hasLoadedRef.current = true
+      fetchPatients()
+    }
+  }, [isOpen])
+
+  // Buscar pacientes en tiempo real
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      searchPatients()
+    } else {
+      setSearchResults([])
+    }
+  }, [searchQuery])
+
+  const fetchPatients = async () => {
+    setIsLoading(true)
+    setError("")
+    try {
+      const response = await fetch("/api/fisio/patients")
+
+      if (!response.ok) {
+        throw new Error("Error al obtener pacientes")
+      }
+
+      const result = await response.json()
+      setPatients(result.data || [])
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error desconocido")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const searchPatients = async () => {
+    setIsSearching(true)
+    try {
+      const response = await fetch(`/api/fisio/search-patients?q=${encodeURIComponent(searchQuery)}`)
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ error: 'Error desconocido' }))
+        throw new Error(errorData.error || `Error ${response.status} al buscar pacientes`)
+      }
+
+      const result = await response.json()
+      setSearchResults(result.data || [])
+    } catch (err) {
+      console.error('Error searching patients:', err)
+      setError(err instanceof Error ? err.message : "Error al buscar pacientes")
+      setSearchResults([])
+    } finally {
+      setIsSearching(false)
+    }
+  }
+
+  const handleAddPatient = async (patient: Patient) => {
+    // Agregar paciente a la lista local
+    if (!patients.find(p => p.id === patient.id)) {
+      setPatients([...patients, patient])
+    }
+    setSearchQuery("")
+    setShowSearch(false)
+  }
+
+  const handleRemovePatient = async (patientId: string) => {
+    const confirmed = confirm("¿Eliminar este paciente del catálogo?")
+    if (!confirmed) return
+
+    try {
+      // Eliminar la recomendación asociada
+      const patient = patients.find(p => p.id === patientId)
+      if (patient?.recommendations?.id) {
+        const response = await fetch(
+          `/api/fisio/recommendations/${patient.recommendations.id}`,
+          { method: "DELETE" }
+        )
+
+        if (!response.ok) {
+          throw new Error("Error al eliminar recomendación")
+        }
+      }
+
+      // Remover de la lista local
+      setPatients(patients.filter(p => p.id !== patientId))
+      if (expandedPatient === patientId) {
+        setExpandedPatient(null)
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al eliminar paciente")
+    }
+  }
+
+  const handleAddExerciseToPatient = async (patientId: string) => {
+    if (!selectedExercise) return
+
+    try {
+      const patient = patients.find(p => p.id === patientId)
+      if (!patient) return
+
+      // Obtener ejercicios actuales
+      const currentExercises = patient.recommendations?.exercises || []
+      const allExercises = [
+        ...currentExercises,
+        // Evitar duplicados
+        ...(currentExercises.some(e => e.exerciseId === selectedExercise.id)
+          ? []
+          : [{ exerciseId: selectedExercise.id, exercise: { id: selectedExercise.id, name: selectedExercise.name } }])
+      ]
+
+      const payload = {
+        patientId,
+        exercises: allExercises.map((ex, idx) => ({
+          exerciseId: typeof ex === 'object' ? (ex as any).exerciseId || ex.id : ex,
+          order: idx + 1
+        }))
+      }
+
+      const response = await fetch("/api/fisio/recommendations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+
+      if (!response.ok) {
+        throw new Error("Error al agregar ejercicio")
+      }
+
+      const result = await response.json()
+
+      // Actualizar lista local
+      setPatients(
+        patients.map(p =>
+          p.id === patientId
+            ? {
+              ...p,
+              recommendations: result.data.recommendations
+            }
+            : p
+        )
+      )
+
+      alert("Ejercicio agregado exitosamente")
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error desconocido")
+    }
+  }
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+          />
+
+          {/* Sidebar */}
+          <motion.div
+            initial={{ opacity: 0, x: 400 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 400 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed right-0 top-0 bottom-0 w-full sm:w-96 bg-white shadow-2xl z-50 flex flex-col overflow-hidden"
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-slate-200 bg-gradient-to-r from-blue-50 to-cyan-50">
+              <div>
+                <h2 className="text-2xl font-bold text-slate-900">📋 Catálogo</h2>
+                <p className="text-sm text-slate-600 mt-1">Mis Pacientes</p>
+              </div>
+              <button
+                onClick={onClose}
+                className="p-2 hover:bg-white/80 rounded-xl transition-colors"
+              >
+                <X className="w-6 h-6 text-slate-600" />
+              </button>
+            </div>
+
+            {/* Content */}
+            <ScrollArea className="flex-1">
+              <div className="p-6 space-y-4">
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm"
+                  >
+                    {error}
+                  </motion.div>
+                )}
+
+                {/* Botón Agregar Paciente */}
+                <Button
+                  onClick={() => setShowSearch(!showSearch)}
+                  className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Agregar Paciente
+                </Button>
+
+                {/* Search Input */}
+                <AnimatePresence>
+                  {showSearch && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="space-y-3 overflow-hidden"
+                    >
+                      <div className="relative">
+                        <Search className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                        <input
+                          type="text"
+                          placeholder="Buscar paciente..."
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                          autoFocus
+                        />
+                      </div>
+
+                      {/* Search Results */}
+                      {isSearching ? (
+                        <div className="text-center py-4">
+                          <Loader2 className="w-5 h-5 animate-spin mx-auto text-slate-400" />
+                        </div>
+                      ) : searchResults.length > 0 ? (
+                        <div className="space-y-2 max-h-48 overflow-y-auto border border-slate-200 rounded-lg p-3 bg-slate-50">
+                          {searchResults.map(patient => (
+                            <motion.button
+                              key={patient.id}
+                              onClick={() => handleAddPatient(patient)}
+                              className="w-full text-left p-3 bg-white border border-green-200 rounded-lg hover:border-green-400 hover:bg-green-50 transition-all"
+                              whileHover={{ scale: 1.02 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <div className="font-semibold text-slate-900">{patient.name}</div>
+                              <div className="text-xs text-slate-500">{patient.email}</div>
+                            </motion.button>
+                          ))}
+                        </div>
+                      ) : searchQuery ? (
+                        <p className="text-center text-slate-500 text-sm">No hay resultados</p>
+                      ) : null}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Patients List */}
+                {isLoading ? (
+                  <div className="text-center py-8">
+                    <Loader2 className="w-6 h-6 animate-spin mx-auto text-slate-400" />
+                  </div>
+                ) : patients.length === 0 ? (
+                  <div className="text-center py-8">
+                    <p className="text-slate-500">No hay pacientes aún</p>
+                    <p className="text-sm text-slate-400 mt-2">Agrega pacientes para comenzar</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {patients.map(patient => (
+                      <motion.div
+                        key={patient.id}
+                        className="border border-slate-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition-shadow"
+                        layout
+                      >
+                        {/* Patient Header */}
+                        <div
+                          onClick={() => setExpandedPatient(
+                            expandedPatient === patient.id ? null : patient.id
+                          )}
+                          className="w-full p-4 flex items-start justify-between hover:bg-slate-50 transition-colors cursor-pointer"
+                        >
+                          <div className="text-left flex-1">
+                            <div className="font-semibold text-slate-900">{patient.name}</div>
+                            <div className="text-sm text-slate-500">{patient.email}</div>
+                            {patient.recommendations?.exercises && patient.recommendations.exercises.length > 0 && (
+                              <div className="text-xs text-blue-600 mt-1">
+                                {patient.recommendations.exercises.length} ejercicio(s)
+                              </div>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <motion.div
+                              animate={{ rotate: expandedPatient === patient.id ? 180 : 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <ChevronDown className="w-5 h-5 text-slate-400" />
+                            </motion.div>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                handleRemovePatient(patient.id)
+                              }}
+                              className="p-1.5 hover:bg-red-100 rounded-lg transition-colors"
+                            >
+                              <Trash2 className="w-4 h-4 text-red-600" />
+                            </button>
+                          </div>
+                        </div>
+
+                        {/* Patient Details */}
+                        <AnimatePresence>
+                          {expandedPatient === patient.id && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="border-t border-slate-200 bg-slate-50"
+                            >
+                              <div className="p-4 space-y-4">
+                                {/* Ejercicios Recomendados */}
+                                {patient.recommendations?.exercises && patient.recommendations.exercises.length > 0 ? (
+                                  <div>
+                                    <h4 className="font-semibold text-sm text-slate-900 mb-2">
+                                      Ejercicios Recomendados:
+                                    </h4>
+                                    <div className="space-y-2">
+                                      {patient.recommendations.exercises.map((ex, idx) => (
+                                        <div key={`${ex.exerciseId}-${idx}`} className="p-2 bg-white rounded-lg text-sm">
+                                          <span className="text-slate-700">{idx + 1}. {ex.exercise.name}</span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <p className="text-sm text-slate-500">Sin ejercicios recomendados</p>
+                                )}
+
+                                {/* Botón Agregar Ejercicio */}
+                                {selectedExercise && (
+                                  <motion.button
+                                    onClick={() => handleAddExerciseToPatient(patient.id)}
+                                    className="w-full py-2 px-3 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white text-sm font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                  >
+                                    <Heart className="w-4 h-4 fill-current" />
+                                    Agregar Ejercicio Actual
+                                  </motion.button>
+                                )}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </motion.div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </ScrollArea>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  )
+}

@@ -1,7 +1,8 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { Play } from "lucide-react"
+import { useSession } from "next-auth/react"
+import { Play, Heart } from "lucide-react"
 import type { Exercise } from "@/src/types"
 import type { ExerciseData } from "@/src/types"
 import { RecommendedExercises } from "@features/exercises/components/recommended-exercises"
@@ -11,9 +12,12 @@ interface ExercisePlayerProps {
   exerciseData: ExerciseData
   onExerciseSelect?: (exercise: Exercise) => void
   onScrollToTop?: () => void
+  onRecommend?: () => void
 }
 
-export default function ExercisePlayer({ exercise, exerciseData, onExerciseSelect, onScrollToTop }: ExercisePlayerProps) {
+export default function ExercisePlayer({ exercise, exerciseData, onExerciseSelect, onScrollToTop, onRecommend }: ExercisePlayerProps) {
+  const { data: session } = useSession()
+  const isFisio = session?.user?.role === "FISIOTERAPEUTA"
   const [thumbnailUrl, setThumbnailUrl] = useState<string | null>(null)
 
   // Extract YouTube video ID from URL
@@ -91,23 +95,36 @@ export default function ExercisePlayer({ exercise, exerciseData, onExerciseSelec
 
       {/* Métricas del ejercicio */}
       {exercise.metrics && (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
-            <p className="text-xs text-blue-600 font-medium mb-1">Dificultad</p>
-            <p className="text-lg font-bold text-blue-900">{exercise.metrics.difficulty}/10</p>
+        <div className="space-y-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div className="p-3 rounded-lg bg-blue-50 border border-blue-200">
+              <p className="text-xs text-blue-600 font-medium mb-1">Dificultad</p>
+              <p className="text-lg font-bold text-blue-900">{exercise.metrics.difficulty}/10</p>
+            </div>
+            <div className="p-3 rounded-lg bg-green-50 border border-green-200">
+              <p className="text-xs text-green-600 font-medium mb-1">Duración</p>
+              <p className="text-lg font-bold text-green-900">{exercise.metrics.duration}m</p>
+            </div>
+            <div className="p-3 rounded-lg bg-orange-50 border border-orange-200">
+              <p className="text-xs text-orange-600 font-medium mb-1">Efectividad</p>
+              <p className="text-lg font-bold text-orange-900">{exercise.metrics.effectiveness}/5</p>
+            </div>
+            <div className="p-3 rounded-lg bg-purple-50 border border-purple-200">
+              <p className="text-xs text-purple-600 font-medium mb-1">Frecuencia</p>
+              <p className="text-lg font-bold text-purple-900">{exercise.metrics.frequency}/sem</p>
+            </div>
           </div>
-          <div className="p-3 rounded-lg bg-green-50 border border-green-200">
-            <p className="text-xs text-green-600 font-medium mb-1">Duración</p>
-            <p className="text-lg font-bold text-green-900">{exercise.metrics.duration}m</p>
-          </div>
-          <div className="p-3 rounded-lg bg-orange-50 border border-orange-200">
-            <p className="text-xs text-orange-600 font-medium mb-1">Efectividad</p>
-            <p className="text-lg font-bold text-orange-900">{exercise.metrics.effectiveness}/5</p>
-          </div>
-          <div className="p-3 rounded-lg bg-purple-50 border border-purple-200">
-            <p className="text-xs text-purple-600 font-medium mb-1">Frecuencia</p>
-            <p className="text-lg font-bold text-purple-900">{exercise.metrics.frequency}/sem</p>
-          </div>
+
+          {/* Botón Recomendar (solo Fisioterapeuta) */}
+          {isFisio && onRecommend && (
+            <button
+              onClick={onRecommend}
+              className="w-full py-3 px-4 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-semibold rounded-xl transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+            >
+              <Heart className="w-5 h-5 fill-current" />
+              Recomendar a Paciente
+            </button>
+          )}
         </div>
       )}
 
