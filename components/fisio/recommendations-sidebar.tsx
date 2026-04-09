@@ -289,7 +289,9 @@ export default function RecommendationsSidebar({
       // Crear copia y intercambiar
       const newExercises = [...exercises]
       const swapIndex = direction === 'up' ? exerciseIndex - 1 : exerciseIndex + 1
-      [newExercises[exerciseIndex], newExercises[swapIndex]] = [newExercises[swapIndex], newExercises[exerciseIndex]]
+      const temp = newExercises[exerciseIndex]
+      newExercises[exerciseIndex] = newExercises[swapIndex]
+      newExercises[swapIndex] = temp
 
       const payload = {
         patientId,
