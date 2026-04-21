@@ -169,9 +169,9 @@ export default function ExerciseModal({
     }
   }, [isOpen])
 
-  // Auto-open player when exercise is selected from recommendations
+  // Auto-open player when exercise is selected from recommendations (only for non-admins)
   useEffect(() => {
-    if (isOpen && selectedExercise && selectedExercise.videoUrl && selectedZone) {
+    if (!isAdmin && isOpen && selectedExercise && selectedExercise.videoUrl && selectedZone) {
       // Ensure zoneData is set for the selected exercise
       if (!zoneData || zoneData.exercises.length === 0) {
         setZoneData({
@@ -186,7 +186,7 @@ export default function ExerciseModal({
       }, 50)
       return () => clearTimeout(timer)
     }
-  }, [selectedExercise, isOpen, selectedZone, category, zoneData])
+  }, [selectedExercise, isOpen, selectedZone, category, zoneData, isAdmin])
 
   const handleViewExercise = (exercise: Exercise) => {
     onExerciseSelect(exercise)
