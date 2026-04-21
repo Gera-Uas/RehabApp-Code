@@ -169,6 +169,25 @@ export default function ExerciseModal({
     }
   }, [isOpen])
 
+  // Auto-open player when exercise is selected from recommendations
+  useEffect(() => {
+    if (isOpen && selectedExercise && selectedExercise.videoUrl && selectedZone) {
+      // Ensure zoneData is set for the selected exercise
+      if (!zoneData || zoneData.exercises.length === 0) {
+        setZoneData({
+          groupId: selectedExercise.groupId,
+          category: category,
+          exercises: [selectedExercise]
+        })
+      }
+      // Use setTimeout to ensure modal is fully rendered before opening player
+      const timer = setTimeout(() => {
+        setShowPlayer(true)
+      }, 50)
+      return () => clearTimeout(timer)
+    }
+  }, [selectedExercise, isOpen, selectedZone, category, zoneData])
+
   const handleViewExercise = (exercise: Exercise) => {
     onExerciseSelect(exercise)
     setShowPlayer(true)

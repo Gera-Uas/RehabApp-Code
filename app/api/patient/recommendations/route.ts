@@ -28,6 +28,13 @@ export async function GET(request: NextRequest) {
               select: {
                 id: true,
                 name: true,
+                videoUrl: true,
+                level: true,
+                movementType: true,
+                position: true,
+                equipment: true,
+                metrics: true,
+                targetMuscles: true,
                 group: {
                   select: {
                     category: true,

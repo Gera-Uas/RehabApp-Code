@@ -12,6 +12,13 @@ interface RecommendedExercise {
   exercise: {
     id: string;
     name: string;
+    videoUrl?: string;
+    level?: string;
+    movementType?: string;
+    position?: string;
+    equipment?: string;
+    metrics?: any;
+    targetMuscles?: any;
     group?: {
       category: string;
       groupId: string;
@@ -22,7 +29,7 @@ interface RecommendedExercise {
 interface PatientRecommendationsSidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  onSelectExercise: (exercise: any) => void;
+  onSelectExercise: (data: { exercise: any; zone: string; category: string }) => void;
 }
 
 export default function PatientRecommendationsSidebar({
@@ -77,14 +84,24 @@ export default function PatientRecommendationsSidebar({
     const exerciseData: Exercise = {
       id: exercise.exercise.id,
       name: exercise.exercise.name,
-      description: "",
-      instructions: [],
       groupId: exercise.exercise.group?.groupId || "",
-      videoUrl: "",
-      imageUrl: "",
+      videoUrl: exercise.exercise.videoUrl || "",
+      metrics: exercise.exercise.metrics,
+      level: exercise.exercise.level,
+      movementType: exercise.exercise.movementType,
+      position: exercise.exercise.position,
+      equipment: exercise.exercise.equipment,
+      targetMuscles: exercise.exercise.targetMuscles,
     };
 
-    onSelectExercise(exerciseData);
+    const zone = exercise.exercise.group?.groupId || "";
+    const category = exercise.exercise.group?.category || "";
+
+    onSelectExercise({
+      exercise: exerciseData,
+      zone,
+      category,
+    });
     onClose();
   };
 

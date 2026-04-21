@@ -51,6 +51,12 @@ export default function PhysiotherapyPlatform() {
     setSelectedExercise(exercise)
   }
 
+  const handlePatientSelectExercise = (data: { exercise: any; zone: string; category: string }) => {
+    setSelectedZone(data.zone)
+    setSelectedCategory(data.category as Category)
+    setSelectedExercise(data.exercise)
+  }
+
   return (
     <div className="min-h-screen p-4 md:p-8">
       <div className="max-w-7xl mx-auto">
@@ -116,7 +122,7 @@ export default function PhysiotherapyPlatform() {
       <PatientRecommendationsSidebar
         isOpen={showPatientSidebar}
         onClose={() => setShowPatientSidebar(false)}
-        onSelectExercise={handleExerciseSelect}
+        onSelectExercise={handlePatientSelectExercise}
       />
     </div>
   )

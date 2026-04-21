@@ -10,17 +10,18 @@ export interface ExerciseMetrics {
 export interface  Exercise {
   id: string
   name: string
-  imageSet: string
+  imageSet?: string
   videoUrl: string
-  steps: number
-  metrics?: ExerciseMetrics
+  steps?: number
+  metrics?: ExerciseMetrics | any
   // Campos para filtrado por contenido
   tags?: string[]
   equipment?: string
-  targetMuscles?: string[]
+  targetMuscles?: string[] | any
   movementType?: string
   level?: "principiante" | "intermedio" | "avanzado"
   position?: string
+  groupId?: string
 }
 
 export interface ExerciseData {
