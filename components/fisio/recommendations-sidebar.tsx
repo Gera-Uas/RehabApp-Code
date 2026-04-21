@@ -353,7 +353,7 @@ export default function RecommendationsSidebar({
             className="fixed right-0 top-0 bottom-0 w-full sm:w-[700px] bg-white shadow-2xl z-50 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-8 border-b border-slate-200 bg-gradient-to-r from-blue-50 to-cyan-50">
+            <div className="flex-shrink-0 flex items-center justify-between p-8 border-b border-slate-200 bg-gradient-to-r from-blue-50 to-cyan-50">
               <div>
                 <h2 className="text-3xl font-bold text-slate-900">📋 Catálogo</h2>
                 <p className="text-base text-slate-600 mt-1">Mis Pacientes y Ejercicios</p>
@@ -366,9 +366,9 @@ export default function RecommendationsSidebar({
               </button>
             </div>
 
-            {/* Content */}
-            <ScrollArea className="flex-1">
-              <div className="p-8 space-y-5">
+            {/* Content with Scrollbar */}
+            <ScrollArea className="flex-1 overflow-hidden">
+              <div className="p-8 space-y-5 pr-6">
                 {error && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
