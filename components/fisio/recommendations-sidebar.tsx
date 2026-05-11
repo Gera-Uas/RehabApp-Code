@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Search, Plus, Trash2, ChevronDown, Heart, Loader2, ArrowUp, ArrowDown } from "lucide-react"
+import { X, Search, Plus, Trash2, ChevronDown, Heart, Loader2, ArrowUp, ArrowDown, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import type { Exercise } from "@/src/types"
@@ -47,6 +47,8 @@ export default function RecommendationsSidebar({
   const [expandedPatient, setExpandedPatient] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [successMessage, setSuccessMessage] = useState("")
 
   // Cargar pacientes al montar el componente (solo una vez)
   useEffect(() => {
@@ -65,6 +67,16 @@ export default function RecommendationsSidebar({
       return () => clearTimeout(timer)
     }
   }, [error])
+
+  // Cerrar modal de éxito automáticamente después de 3 segundos
+  useEffect(() => {
+    if (showSuccessModal) {
+      const timer = setTimeout(() => {
+        setShowSuccessModal(false)
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [showSuccessModal])
 
   // Buscar pacientes en tiempo real cuando cambia searchQuery
   useEffect(() => {
@@ -222,7 +234,8 @@ export default function RecommendationsSidebar({
       )
 
       setError("") // Limpiar errores si había alguno
-      alert("Ejercicio agregado exitosamente")
+      setSuccessMessage("Ejercicio agregado exitosamente")
+      setShowSuccessModal(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error desconocido")
     }
@@ -593,6 +606,71 @@ export default function RecommendationsSidebar({
               </div>
             </ScrollArea>
           </motion.div>
+
+          {/* Success Modal */}
+          <AnimatePresence>
+            {showSuccessModal && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="fixed inset-0 flex items-center justify-center z-[100]"
+                onClick={() => setShowSuccessModal(false)}
+              >
+                {/* Modal Background */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+                  onClick={() => setShowSuccessModal(false)}
+                />
+
+                {/* Modal Content */}
+                <motion.div
+                  className="relative bg-white rounded-2xl shadow-2xl p-8 max-w-sm mx-4"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="text-center">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.1 }}
+                      className="flex justify-center mb-4"
+                    >
+                      <CheckCircle className="w-16 h-16 text-green-500" />
+                    </motion.div>
+
+                    <motion.h3
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="text-2xl font-bold text-slate-900 mb-2"
+                    >
+                      ¡Éxito!
+                    </motion.h3>
+
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-slate-600 text-lg"
+                    >
+                      {successMessage}
+                    </motion.p>
+
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ duration: 3, delay: 0.4 }}
+                      className="h-1 bg-green-500 mt-6 rounded-full origin-left"
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </>
       )}
     </AnimatePresence>

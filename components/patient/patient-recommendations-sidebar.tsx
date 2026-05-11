@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Loader2, BookOpen } from "lucide-react";
+import { X, Loader2, BookOpen, RotateCcw } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Checkbox } from "@/components/ui/checkbox";
 import type { Exercise } from "@/src/types";
 
 interface RecommendedExercise {
@@ -41,6 +42,7 @@ export default function PatientRecommendationsSidebar({
   const [exercises, setExercises] = useState<RecommendedExercise[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [completedExercises, setCompletedExercises] = useState<Set<string>>(new Set());
 
   // Cargar ejercicios recomendados al montar el componente
   useEffect(() => {
@@ -77,6 +79,20 @@ export default function PatientRecommendationsSidebar({
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleCheckboxChange = (exerciseId: string, isChecked: boolean) => {
+    const newCompleted = new Set(completedExercises);
+    if (isChecked) {
+      newCompleted.add(exerciseId);
+    } else {
+      newCompleted.delete(exerciseId);
+    }
+    setCompletedExercises(newCompleted);
+  };
+
+  const handleResetAll = () => {
+    setCompletedExercises(new Set());
   };
 
   const handleExerciseClick = (exercise: RecommendedExercise) => {
@@ -132,12 +148,25 @@ export default function PatientRecommendationsSidebar({
                 <h2 className="text-3xl font-bold text-slate-900">📚 Mis Ejercicios</h2>
                 <p className="text-base text-slate-600 mt-1">Ejercicios Recomendados</p>
               </div>
-              <button
-                onClick={onClose}
-                className="p-2 hover:bg-white/80 rounded-xl transition-colors"
-              >
-                <X className="w-6 h-6 text-slate-600" />
-              </button>
+              <div className="flex gap-2">
+                {exercises.length > 0 && completedExercises.size > 0 && (
+                  <motion.button
+                    onClick={handleResetAll}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="p-2 hover:bg-purple-100 rounded-xl transition-colors text-purple-600 hover:text-purple-700"
+                    title="Desmarcar todos los ejercicios"
+                  >
+                    <RotateCcw className="w-6 h-6" />
+                  </motion.button>
+                )}
+                <button
+                  onClick={onClose}
+                  className="p-2 hover:bg-white/80 rounded-xl transition-colors"
+                >
+                  <X className="w-6 h-6 text-slate-600" />
+                </button>
+              </div>
             </div>
 
             {/* Content with Scrollbar */}
@@ -167,9 +196,16 @@ export default function PatientRecommendationsSidebar({
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    <p className="text-sm text-slate-600 font-medium">
-                      Total: {exercises.length} ejercicio(s)
-                    </p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm text-slate-600 font-medium">
+                        Total: {exercises.length} ejercicio(s)
+                      </p>
+                      {completedExercises.size > 0 && (
+                        <p className="text-xs text-purple-600 font-medium">
+                          {completedExercises.size} completado(s)
+                        </p>
+                      )}
+                    </div>
                     {exercises.map((exercise, idx) => {
                       const category = exercise.exercise.group?.category || "N/A";
                       const zone = exercise.exercise.group?.groupId || "N/A";
@@ -182,37 +218,64 @@ export default function PatientRecommendationsSidebar({
                           ? "Fortalecimiento"
                           : category;
 
+                      const isCompleted = completedExercises.has(exercise.exerciseId);
+
                       return (
-                        <motion.button
+                        <motion.div
                           key={`${exercise.exerciseId}-${idx}`}
-                          onClick={() => handleExerciseClick(exercise)}
-                          className="w-full text-left p-5 border border-slate-200 rounded-xl hover:shadow-lg hover:border-purple-300 transition-all bg-white hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50"
+                          className="p-5 border border-slate-200 rounded-xl hover:shadow-lg hover:border-purple-300 transition-all bg-white hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                         >
-                          <div className="flex items-start justify-between">
-                            <div className="flex-1">
-                              <div className="text-lg font-semibold text-slate-900 mb-2">
-                                {idx + 1}. {exercise.exercise.name}
-                              </div>
-                              <div className="flex gap-2 flex-wrap">
-                                <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
-                                  {categoryLabel}
-                                </span>
-                                <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700">
-                                  {zone}
-                                </span>
-                              </div>
+                          <div className="flex items-start gap-4">
+                            {/* Checkbox */}
+                            <div className="flex-shrink-0 pt-1 flex items-center justify-center scale-150 origin-left">
+                              <Checkbox
+                                id={`exercise-${exercise.exerciseId}`}
+                                checked={isCompleted}
+                                onCheckedChange={(checked) =>
+                                  handleCheckboxChange(exercise.exerciseId, checked === true)
+                                }
+                                className="cursor-pointer"
+                              />
                             </div>
-                            <motion.div
-                              initial={{ opacity: 0, x: -10 }}
-                              whileHover={{ opacity: 1, x: 0 }}
-                              className="text-purple-600 font-medium text-sm mt-1"
+
+                            {/* Exercise Info */}
+                            <button
+                              onClick={() => handleExerciseClick(exercise)}
+                              className="flex-1 text-left"
                             >
-                              Ver →
-                            </motion.div>
+                              <div className="flex items-start justify-between">
+                                <div className="flex-1">
+                                  <div
+                                    className={`text-lg font-semibold mb-2 transition-all ${
+                                      isCompleted
+                                        ? "text-slate-500 line-through"
+                                        : "text-slate-900"
+                                    }`}
+                                  >
+                                    {idx + 1}. {exercise.exercise.name}
+                                  </div>
+                                  <div className="flex gap-2 flex-wrap">
+                                    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-700">
+                                      {categoryLabel}
+                                    </span>
+                                    <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700">
+                                      {zone}
+                                    </span>
+                                  </div>
+                                </div>
+                                <motion.div
+                                  initial={{ opacity: 0, x: -10 }}
+                                  whileHover={{ opacity: 1, x: 0 }}
+                                  className="text-purple-600 font-medium text-sm mt-1"
+                                >
+                                  Ver →
+                                </motion.div>
+                              </div>
+                            </button>
                           </div>
-                        </motion.button>
+                        </motion.div>
                       );
                     })}
                   </div>
